@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweet Rosa Bakery | Artisan Breads & Cuban Pastries</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --terra:#C2410C;
+  --terra-light:#FED7AA;
+  --terra-dark:#9A3412;
+  --honey:#F59E0B;
+  --honey-light:#FEF3C7;
+  --cocoa:#292524;
+  --bark:#44403C;
+  --stone:#78716C;
+  --parch:#FEFCE8;
+  --linen:#FFF8F0;
+  --white:#FFFFFF;
+  --border:#E7E5E4;
+  --r:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito Sans',sans-serif;color:var(--cocoa);background:var(--linen);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif}
+::selection{background:var(--terra);color:white}
+
+/* TEXTURE */
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;opacity:0.02;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' type='fractalNoise'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");z-index:9999}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,248,240,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(194,65,12,0.08)}
+.ni{max-width:1200px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-r{font-size:32px}
+.logo-t{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--terra-dark);font-weight:700}
+.logo-sub{font-size:10px;color:var(--stone);text-transform:uppercase;letter-spacing:2px;display:block;margin-top:-4px}
+.nl{display:flex;gap:32px;align-items:center}
+.nl a{text-decoration:none;color:var(--bark);font-size:14px;font-weight:500;transition:color 0.3s}
+.nl a:hover{color:var(--terra)}
+.nl .cta{background:var(--terra);color:white!important;padding:10px 26px;border-radius:50px;font-weight:600!important;transition:all 0.3s!important}
+.nl .cta:hover{background:var(--terra-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(194,65,12,0.25)}
+.mm{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--cocoa)}
+
+/* HERO */
+.hero{min-height:100vh;padding:130px 28px 80px;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;right:0;width:55%;height:100%;background:linear-gradient(160deg,var(--honey-light) 0%,var(--terra-light) 50%,rgba(254,243,199,0.3) 100%);clip-path:polygon(15% 0,100% 0,100% 100%,0% 100%)}
+.hi{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;width:100%}
+.hero-ribbon{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--terra-light);padding:8px 18px;border-radius:50px;font-size:12px;font-weight:700;color:var(--terra);margin-bottom:24px;text-transform:uppercase;letter-spacing:1px}
+.hero h1{font-size:64px;line-height:1.05;color:var(--cocoa);margin-bottom:20px;font-weight:700}
+.hero h1 .accent{color:var(--terra);font-style:italic}
+.hero-p{font-size:18px;line-height:1.8;color:var(--stone);margin-bottom:36px;max-width:460px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.bt{padding:16px 36px;border-radius:50px;text-decoration:none;font-weight:700;font-size:15px;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:inherit}
+.bt-t{background:var(--terra);color:white}.bt-t:hover{background:var(--terra-dark);transform:translateY(-3px);box-shadow:0 12px 36px rgba(194,65,12,0.25)}
+.bt-o{background:transparent;color:var(--cocoa);border:2px solid var(--cocoa)}.bt-o:hover{background:var(--cocoa);color:white}
+.hero-right{position:relative}
+.showcase{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.sc{background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,0.05);transition:all 0.4s;cursor:pointer}
+.sc:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:0 20px 50px rgba(0,0,0,0.1)}
+.sc:nth-child(2){margin-top:36px}
+.sc:nth-child(3){margin-top:-20px}
+.sc-img{height:170px;display:flex;align-items:center;justify-content:center;font-size:60px;position:relative}
+.sc-img.i1{background:linear-gradient(135deg,#FEF3C7,#FDE68A)}
+.sc-img.i2{background:linear-gradient(135deg,#FECDD3,#FDA4AF)}
+.sc-img.i3{background:linear-gradient(135deg,#FED7AA,#FDBA74)}
+.sc-img.i4{background:linear-gradient(135deg,#D9F99D,#BEF264)}
+.sc-tag{position:absolute;top:10px;left:10px;background:var(--terra);color:white;padding:4px 12px;border-radius:50px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.sc-info{padding:14px 18px}
+.sc-info h4{font-size:16px;color:var(--cocoa);margin-bottom:2px}
+.sc-info .pr{font-size:15px;color:var(--terra);font-weight:700}
+.hero-float{position:absolute;top:-16px;right:-16px;background:var(--cocoa);color:white;padding:14px 20px;border-radius:16px;font-size:13px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,0.2);animation:bob 3.5s ease-in-out infinite;z-index:2}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(1deg)}}
+
+/* MENU CATEGORIES */
+.menu{padding:100px 28px;background:var(--white)}
+.menu-in{max-width:1200px;margin:0 auto}
+.tag{display:inline-block;background:var(--terra-light);color:var(--terra-dark);padding:6px 18px;border-radius:50px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+.stit{font-size:46px;color:var(--cocoa);margin-bottom:16px;font-weight:700}
+.ssub{font-size:16px;color:var(--stone);max-width:520px;margin-bottom:60px;line-height:1.8}
+
+.cat-tabs{display:flex;gap:12px;margin-bottom:48px;flex-wrap:wrap}
+.cat-tab{padding:10px 24px;border-radius:50px;border:2px solid var(--border);background:transparent;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.3s;font-family:inherit;color:var(--bark)}
+.cat-tab.active,.cat-tab:hover{background:var(--terra);color:white;border-color:var(--terra)}
+
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.mi{display:flex;gap:20px;background:var(--linen);border:1px solid var(--border);border-radius:var(--r);padding:20px;transition:all 0.3s;cursor:pointer}
+.mi:hover{background:var(--white);box-shadow:0 8px 32px rgba(0,0,0,0.06);transform:translateY(-2px);border-color:var(--terra-light)}
+.mi-img{width:90px;height:90px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:44px;flex-shrink:0}
+.mi-img.b1{background:linear-gradient(135deg,#FEF3C7,#FDE68A)}
+.mi-img.b2{background:linear-gradient(135deg,#FECDD3,#FBCFE8)}
+.mi-img.b3{background:linear-gradient(135deg,#FED7AA,#FDBA74)}
+.mi-img.b4{background:linear-gradient(135deg,#E0E7FF,#C7D2FE)}
+.mi-info{flex:1}
+.mi-info h4{font-size:18px;color:var(--cocoa);margin-bottom:4px}
+.mi-info p{font-size:13px;color:var(--stone);line-height:1.6;margin-bottom:8px}
+.mi-row{display:flex;justify-content:space-between;align-items:center}
+.mi-price{font-size:17px;font-weight:700;color:var(--terra)}
+.mi-badge{background:var(--honey-light);color:var(--honey);padding:3px 10px;border-radius:50px;font-size:10px;font-weight:700;text-transform:uppercase}
+
+/* STORY */
+.story{padding:100px 28px;background:var(--cocoa);color:white;position:relative;overflow:hidden}
+.story::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.st-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center;position:relative}
+.st-vis{border-radius:24px;height:480px;background:linear-gradient(135deg,var(--terra),var(--honey));display:flex;align-items:center;justify-content:center;font-size:100px;position:relative;overflow:hidden}
+.st-vis::after{content:'Since 1998';position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.4);backdrop-filter:blur(10px);color:white;padding:8px 24px;border-radius:50px;font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:1px}
+.story .tag{background:rgba(255,255,255,0.1);color:var(--honey)}
+.story h2{font-size:44px;margin-bottom:20px;color:white}
+.story p{font-size:16px;line-height:1.9;color:rgba(255,255,255,0.7);margin-bottom:16px}
+.st-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px;padding-top:36px;border-top:1px solid rgba(255,255,255,0.1)}
+.st-n strong{display:block;font-family:'Cormorant Garamond',serif;font-size:42px;color:var(--honey);font-weight:700}
+.st-n span{font-size:12px;color:rgba(255,255,255,0.45);font-weight:600;text-transform:uppercase;letter-spacing:1px}
+
+/* REVIEWS */
+.reviews{padding:100px 28px;background:var(--linen)}
+.rev-in{max-width:1200px;margin:0 auto}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rev-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:28px;transition:all 0.3s}
+.rev-card:hover{box-shadow:0 12px 36px rgba(0,0,0,0.06);transform:translateY(-4px)}
+.rev-stars{color:var(--honey);font-size:16px;margin-bottom:14px;letter-spacing:2px}
+.rev-card p{font-size:15px;line-height:1.7;color:var(--bark);margin-bottom:20px;font-style:italic}
+.rev-who{font-weight:700;font-size:14px;color:var(--cocoa)}
+.rev-src{font-size:11px;color:var(--stone)}
+
+/* CATERING */
+.catering{padding:80px 28px;background:var(--white)}
+.cat-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.cat-visual{background:linear-gradient(135deg,var(--honey-light),var(--terra-light));border-radius:24px;height:380px;display:flex;align-items:center;justify-content:center;font-size:80px}
+.cat-content h2{font-size:38px;margin-bottom:16px}
+.cat-content p{font-size:16px;color:var(--stone);line-height:1.8;margin-bottom:24px}
+.cat-list{display:flex;flex-direction:column;gap:12px}
+.cat-item{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--bark)}
+.cat-item .ck{width:28px;height:28px;background:var(--terra-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--terra);flex-shrink:0}
+
+/* ORDER */
+.order{padding:100px 28px;background:linear-gradient(135deg,var(--honey-light),var(--linen));text-align:center}
+.ord-in{max-width:650px;margin:0 auto}
+.order h2{font-size:48px;margin-bottom:16px}
+.order p{font-size:17px;color:var(--stone);margin-bottom:40px;line-height:1.7}
+.ord-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.ord-ph{margin-top:24px;font-size:15px;color:var(--stone)}
+.ord-ph a{color:var(--terra);font-weight:700;text-decoration:none;font-size:22px}
+
+/* LOCATION */
+.loc{padding:80px 28px;background:var(--white)}
+.loc-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.lc{background:var(--linen);border:1px solid var(--border);border-radius:var(--r);padding:28px;text-align:center;transition:all 0.3s}
+.lc:hover{box-shadow:0 8px 24px rgba(0,0,0,0.04)}
+.lc .ico{font-size:36px;margin-bottom:14px}
+.lc h3{font-size:20px;margin-bottom:8px;color:var(--cocoa)}
+.lc p{font-size:14px;color:var(--stone);line-height:1.7}
+
+footer{background:var(--cocoa);color:white;padding:48px 28px;text-align:center}
+footer .fl{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--honey);margin-bottom:16px}
+footer a{color:rgba(255,255,255,0.5);text-decoration:none;margin:0 16px;font-size:13px}
+footer .cp{margin-top:16px;font-size:12px;opacity:0.3}
+
+/* CHAT */
+.cw{position:fixed;bottom:24px;right:24px;z-index:999}
+.cb{width:62px;height:62px;background:linear-gradient(135deg,var(--terra),var(--terra-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 28px rgba(194,65,12,0.35);transition:all 0.3s;font-size:26px;color:white;border:none}
+.cb:hover{transform:scale(1.1)}
+.cpop{position:absolute;bottom:78px;right:0;width:360px;background:var(--white);border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,0.15);overflow:hidden;display:none;animation:su 0.3s}
+.cpop.on{display:block}
+@keyframes su{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.ch{background:linear-gradient(135deg,var(--terra),var(--terra-dark));padding:20px;color:white}
+.ch h4{font-family:'Cormorant Garamond',serif;font-size:18px}
+.ch p{font-size:12px;opacity:0.8}
+.cms{padding:20px;height:270px;overflow-y:auto}
+.bm{display:flex;gap:8px;margin-bottom:14px}
+.bm .av{width:30px;height:30px;background:var(--terra-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.bm .bbl{background:var(--linen);padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.5;max-width:260px;color:var(--cocoa)}
+.cft{display:flex;padding:12px 16px;border-top:1px solid var(--border);gap:8px}
+.cft input{flex:1;border:1px solid var(--border);border-radius:50px;padding:10px 16px;font-size:14px;outline:none;font-family:inherit}
+.cft button{background:var(--terra);color:white;border:none;border-radius:50px;padding:10px 18px;cursor:pointer;font-weight:700;font-size:13px}
+
+@media(max-width:768px){
+  .nl{display:none}.mm{display:block}
+  .hi,.st-in,.cat-in{grid-template-columns:1fr}
+  .hero h1{font-size:40px}
+  .menu-grid,.rev-grid,.loc-in{grid-template-columns:1fr}
+  .showcase{grid-template-columns:1fr 1fr}
+  .stit{font-size:34px}
+  .st-vis{height:300px;font-size:60px}
+  .cat-visual{height:260px}
+}
+.fi{opacity:0;transform:translateY(24px);transition:all 0.6s}.fi.v{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="ni">
+    <a href="#" class="logo"><span class="logo-r">&#x1F339;</span><div><span class="logo-t">Sweet Rosa</span><span class="logo-sub">Bakery &amp; Caf&eacute;</span></div></a>
+    <div class="nl">
+      <a href="#menu">Menu</a>
+      <a href="#story">Our Story</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#catering">Catering</a>
+      <a href="#order" class="cta">Order Now</a>
+    </div>
+    <button class="mm">&#9776;</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hi">
+    <div>
+      <div class="hero-ribbon">&#x1F3C6; Best Bakery 2025 &mdash; Miami Herald</div>
+      <h1>Where every bite tells a <span class="accent">story</span></h1>
+      <p class="hero-p">Family recipes passed down three generations. Artisan breads, Cuban pastries, custom cakes, and that warm aroma that makes you feel at home.</p>
+      <div class="hero-btns">
+        <a href="#order" class="bt bt-t">&#x1F6D2; Order Online</a>
+        <a href="#menu" class="bt bt-o">Explore Menu</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-float">&#x2728; Fresh every morning at 5AM</div>
+      <div class="showcase">
+        <div class="sc"><div class="sc-img i1"><span class="sc-tag">Bestseller</span>&#x1F956;</div><div class="sc-info"><h4>Cuban Bread</h4><span class="pr">$3.50</span></div></div>
+        <div class="sc"><div class="sc-img i2">&#x1F382;</div><div class="sc-info"><h4>Tres Leches</h4><span class="pr">$36.00</span></div></div>
+        <div class="sc"><div class="sc-img i3"><span class="sc-tag">New</span>&#x1F9C1;</div><div class="sc-info"><h4>Guava Pastelito</h4><span class="pr">$2.75</span></div></div>
+        <div class="sc"><div class="sc-img i4">&#x2615;</div><div class="sc-info"><h4>Caf&eacute; con Leche</h4><span class="pr">$3.25</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="menu-in">
+    <span class="tag">Our Menu</span>
+    <h2 class="stit">Made from scratch,<br>made with love</h2>
+    <p class="ssub">Every item baked fresh daily using Abuela's original recipes and the finest local ingredients. No preservatives, ever.</p>
+    <div class="cat-tabs">
+      <button class="cat-tab active">All</button>
+      <button class="cat-tab">Breads</button>
+      <button class="cat-tab">Pastries</button>
+      <button class="cat-tab">Cakes</button>
+      <button class="cat-tab">Drinks</button>
+    </div>
+    <div class="menu-grid">
+      <div class="mi fi"><div class="mi-img b1">&#x1F956;</div><div class="mi-info"><h4>Cuban Bread</h4><p>Traditional long loaf with crispy crust and soft center. Baked on palmetto leaves.</p><div class="mi-row"><span class="mi-price">$3.50</span><span class="mi-badge">Bestseller</span></div></div></div>
+      <div class="mi fi"><div class="mi-img b3">&#x1F950;</div><div class="mi-info"><h4>Butter Croissant</h4><p>Flaky, buttery layers made with imported European butter. 72-hour fermentation.</p><div class="mi-row"><span class="mi-price">$4.25</span></div></div></div>
+      <div class="mi fi"><div class="mi-img b2">&#x1F9C1;</div><div class="mi-info"><h4>Guava &amp; Cheese Pastelito</h4><p>Flaky puff pastry filled with sweet guava paste and creamy cheese.</p><div class="mi-row"><span class="mi-price">$2.75</span><span class="mi-badge">Fan Favorite</span></div></div></div>
+      <div class="mi fi"><div class="mi-img b1">&#x1F35E;</div><div class="mi-info"><h4>Sourdough Loaf</h4><p>Artisan sourdough with 24-hour fermentation. Tangy, chewy, and crusty.</p><div class="mi-row"><span class="mi-price">$7.50</span></div></div></div>
+      <div class="mi fi"><div class="mi-img b2">&#x1F370;</div><div class="mi-info"><h4>Tres Leches Cake</h4><p>Moist sponge soaked in three milks, whipped cream topping, and cinnamon.</p><div class="mi-row"><span class="mi-price">$36.00</span><span class="mi-badge">Serves 8-10</span></div></div></div>
+      <div class="mi fi"><div class="mi-img b4">&#x2615;</div><div class="mi-info"><h4>Caf&eacute; con Leche</h4><p>Rich Cuban espresso with steamed milk. The perfect pairing for any pastry.</p><div class="mi-row"><span class="mi-price">$3.25</span></div></div></div>
+      <div class="mi fi"><div class="mi-img b3">&#x1F36A;</div><div class="mi-info"><h4>Coconut Macaroons</h4><p>Golden toasted coconut cookies dipped in dark chocolate. Box of 6.</p><div class="mi-row"><span class="mi-price">$8.00</span><span class="mi-badge">New</span></div></div></div>
+      <div class="mi fi"><div class="mi-img b1">&#x1F96F;</div><div class="mi-info"><h4>Medianoche Roll</h4><p>Sweet, eggy bread perfect for the classic Cuban midnight sandwich.</p><div class="mi-row"><span class="mi-price">$2.50</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="st-in">
+    <div class="st-vis">&#x1F469;&#x200D;&#x1F373;</div>
+    <div>
+      <span class="tag">Our Story</span>
+      <h2>From Abuela's kitchen to your table</h2>
+      <p>When Rosa Fernandez opened a tiny bakery on Calle Ocho in 1998, she had one mission: bring the flavors of her Cuban childhood to the heart of Miami. Every morning, she was up at 3 AM, kneading dough and filling the neighborhood with the scent of fresh bread.</p>
+      <p>Today, her granddaughter carries on that legacy. Same recipes. Same passion. Same love in every loaf, every pastelito, every cake. Three generations of baking, one family tradition.</p>
+      <div class="st-nums">
+        <div class="st-n"><strong>27</strong><span>Years Baking</span></div>
+        <div class="st-n"><strong>50+</strong><span>Daily Recipes</span></div>
+        <div class="st-n"><strong>4.6&#9733;</strong><span>Google Rating</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="rev-in">
+    <span class="tag">Customer Love</span>
+    <h2 class="stit" style="margin-bottom:60px">What our customers say</h2>
+    <div class="rev-grid">
+      <div class="rev-card fi">
+        <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"This bakery reminds me of my abuela's kitchen in Havana. The Cuban bread is perfection &mdash; crispy, warm, and exactly how it should taste. I come here every single morning."</p>
+        <div class="rev-who">Carlos G. <span class="rev-src">&bull; Google Review</span></div>
+      </div>
+      <div class="rev-card fi">
+        <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Ordered a tres leches for my daughter's quincea&ntilde;era. It was SO beautiful and delicious, every single guest asked for the bakery's name. Thank you, Rosa!"</p>
+        <div class="rev-who">Maria L. <span class="rev-src">&bull; Yelp Review</span></div>
+      </div>
+      <div class="rev-card fi">
+        <div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Hidden gem on 8th Street! The guava pastelitos are the best I've ever had, and their caf&eacute; con leche is addictive. Friendly staff, amazing prices, perfection."</p>
+        <div class="rev-who">David T. <span class="rev-src">&bull; Google Review</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="catering" id="catering">
+  <div class="cat-in">
+    <div class="cat-visual">&#x1F389;</div>
+    <div class="cat-content">
+      <span class="tag">Catering</span>
+      <h2>Let us make your event special</h2>
+      <p>From corporate breakfasts to wedding cakes, quincea&ntilde;eras to holiday parties &mdash; we cater events of all sizes with custom menus.</p>
+      <div class="cat-list">
+        <div class="cat-item"><div class="ck">&#10003;</div>Custom cakes for any occasion</div>
+        <div class="cat-item"><div class="ck">&#10003;</div>Pastry platters (25, 50, 100 pieces)</div>
+        <div class="cat-item"><div class="ck">&#10003;</div>Fresh bread baskets for restaurants</div>
+        <div class="cat-item"><div class="ck">&#10003;</div>Corporate breakfast packages</div>
+        <div class="cat-item"><div class="ck">&#10003;</div>48-hour notice &bull; Free delivery over $100</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="order" id="order">
+  <div class="ord-in">
+    <span class="tag">Order Now</span>
+    <h2>Fresh to your table</h2>
+    <p>Order online for pickup or local delivery. Custom cakes need 48 hours notice. Ask our AI assistant about today's specials!</p>
+    <div class="ord-btns">
+      <a href="#" class="bt bt-t">&#x1F6D2; Order for Pickup</a>
+      <a href="#" class="bt bt-o">&#x1F69A; Request Delivery</a>
+    </div>
+    <div class="ord-ph">Or call us: <a href="tel:+13055551234">(305) 555-1234</a></div>
+  </div>
+</section>
+
+<section class="loc">
+  <div class="loc-in">
+    <div class="lc"><div class="ico">&#x1F4CD;</div><h3>Find Us</h3><p>1448 SW 8th Street<br>Miami, FL 33135<br>Heart of Calle Ocho</p></div>
+    <div class="lc"><div class="ico">&#x23F0;</div><h3>Hours</h3><p>Mon-Sat: 5:00 AM - 9:00 PM<br>Sunday: 6:00 AM - 6:00 PM<br>First bake at 5 AM!</p></div>
+    <div class="lc"><div class="ico">&#x1F4F1;</div><h3>Connect</h3><p>Phone: (305) 555-1234<br>hola@sweetrosa.com<br>@sweetrosamia</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">Sweet Rosa Bakery</div>
+  <div><a href="#">Menu</a><a href="#">Catering</a><a href="#">Custom Cakes</a><a href="#">Careers</a><a href="#">Gift Cards</a></div>
+  <p class="cp">&copy; 2026 Sweet Rosa Bakery &amp; Caf&eacute;. All rights reserved. | Powered by Scientia Thrive</p>
+</footer>
+
+<div class="cw">
+  <div class="cpop" id="cpop">
+    <div class="ch"><h4>&#x1F339; Rosa AI Assistant</h4><p>Online &bull; Order &amp; menu help</p></div>
+    <div class="cms"><div class="bm"><div class="av">&#x1F339;</div><div class="bbl">&iexcl;Hola! &#x1F44B; Welcome to Sweet Rosa! I can help you place an order, check today's specials, inquire about catering, or answer any questions. How can I help you today?</div></div></div>
+    <div class="cft"><input placeholder="Ask about our menu..."><button>Send</button></div>
+  </div>
+  <button class="cb" onclick="document.getElementById('cpop').classList.toggle('on')">&#x1F4AC;</button>
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')})},{threshold:0.1});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
