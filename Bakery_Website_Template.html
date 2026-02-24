@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golden Crust Bakery | Fresh Baked Daily</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --caramel: #B45309;
+  --caramel-light: #FEF3C7;
+  --caramel-dark: #92400E;
+  --espresso: #1C1917;
+  --cocoa: #44403C;
+  --cream: #FFFBEB;
+  --blush: #FDE68A;
+  --rose: #FB923C;
+  --white: #FFFFFF;
+  --linen: #FAF9F6;
+  --border: #E7E5E4;
+  --radius: 20px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', sans-serif; color: var(--espresso); background: var(--cream); overflow-x: hidden; }
+h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,251,235,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(180,83,9,0.1); }
+nav .nav-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-icon { font-size: 32px; }
+.logo-text { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--caramel-dark); font-weight: 700; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { text-decoration: none; color: var(--cocoa); font-size: 14px; font-weight: 500; transition: color 0.3s; }
+.nav-links a:hover { color: var(--caramel); }
+.nav-cta { background: var(--caramel); color: var(--white) !important; padding: 12px 28px; border-radius: 50px; font-weight: 600 !important; transition: all 0.3s !important; }
+.nav-cta:hover { background: var(--caramel-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(180,83,9,0.3); }
+.mobile-menu { display: none; background: none; border: none; font-size: 24px; cursor: pointer; }
+
+/* HERO */
+.hero { padding: 120px 24px 60px; min-height: 100vh; display: flex; align-items: center; background: var(--cream); position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: linear-gradient(135deg, var(--caramel-light) 0%, rgba(251,146,60,0.15) 100%); clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%); }
+.grain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.03; pointer-events: none; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+.hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; width: 100%; }
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid var(--blush); padding: 8px 18px; border-radius: 50px; font-size: 13px; font-weight: 600; color: var(--caramel); margin-bottom: 24px; }
+.hero h1 { font-size: 60px; line-height: 1.05; color: var(--espresso); margin-bottom: 20px; font-weight: 800; }
+.hero h1 .script { color: var(--caramel); font-style: italic; font-weight: 600; }
+.hero > div:first-child p { font-size: 18px; line-height: 1.7; color: var(--cocoa); margin-bottom: 36px; max-width: 480px; }
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-warm { background: var(--caramel); color: white; padding: 16px 36px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer; font-family: inherit; }
+.btn-warm:hover { background: var(--caramel-dark); transform: translateY(-3px); box-shadow: 0 12px 36px rgba(180,83,9,0.3); }
+.btn-outline { background: transparent; color: var(--espresso); padding: 16px 36px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 15px; border: 2px solid var(--espresso); transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-outline:hover { background: var(--espresso); color: white; }
+.hero-visual { position: relative; }
+.pastry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.pastry-card { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.06); transition: all 0.4s; cursor: pointer; }
+.pastry-card:hover { transform: translateY(-8px) rotate(-1deg); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+.pastry-card:nth-child(2) { margin-top: 40px; }
+.pastry-card:nth-child(3) { margin-top: -20px; }
+.pastry-img { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 64px; }
+.pastry-img.bread { background: linear-gradient(135deg, #FEF3C7, #FDE68A); }
+.pastry-img.cake { background: linear-gradient(135deg, #FECDD3, #FDA4AF); }
+.pastry-img.croissant { background: linear-gradient(135deg, #FED7AA, #FDBA74); }
+.pastry-img.cookie { background: linear-gradient(135deg, #D4D4D8, #E4E4E7); }
+.pastry-info { padding: 16px 20px; }
+.pastry-info h4 { font-size: 16px; margin-bottom: 4px; }
+.pastry-info span { font-size: 14px; color: var(--caramel); font-weight: 700; }
+.hero-badge-float { position: absolute; top: -10px; left: -20px; background: var(--espresso); color: white; padding: 14px 22px; border-radius: 16px; font-size: 14px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.2); animation: floaty 4s ease-in-out infinite; z-index: 2; }
+@keyframes floaty { 0%, 100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-12px) rotate(0deg); } }
+
+/* FEATURED */
+.featured { padding: 100px 24px; background: var(--white); }
+.featured-inner { max-width: 1200px; margin: 0 auto; }
+.section-tag { display: inline-block; background: var(--caramel-light); color: var(--caramel-dark); padding: 6px 18px; border-radius: 50px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+.section-title { font-size: 44px; color: var(--espresso); margin-bottom: 16px; }
+.section-sub { font-size: 17px; color: var(--cocoa); max-width: 520px; margin-bottom: 60px; line-height: 1.7; }
+.menu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.menu-card { background: var(--linen); border-radius: var(--radius); overflow: hidden; transition: all 0.4s; cursor: pointer; border: 1px solid transparent; }
+.menu-card:hover { background: white; border-color: var(--blush); box-shadow: 0 16px 48px rgba(0,0,0,0.06); transform: translateY(-6px); }
+.menu-thumb { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 72px; position: relative; }
+.menu-thumb.bg1 { background: linear-gradient(135deg, #FEF3C7, #FDE68A); }
+.menu-thumb.bg2 { background: linear-gradient(135deg, #FECDD3, #FBCFE8); }
+.menu-thumb.bg3 { background: linear-gradient(135deg, #FED7AA, #FDBA74); }
+.menu-thumb.bg4 { background: linear-gradient(135deg, #D9F99D, #BEF264); }
+.menu-badge { position: absolute; top: 12px; right: 12px; background: var(--caramel); color: white; padding: 4px 12px; border-radius: 50px; font-size: 11px; font-weight: 700; }
+.menu-details { padding: 20px; }
+.menu-details h4 { font-size: 18px; margin-bottom: 6px; }
+.menu-details p { font-size: 13px; color: var(--cocoa); line-height: 1.5; margin-bottom: 12px; }
+.menu-price { font-size: 18px; font-weight: 700; color: var(--caramel); }
+
+/* STORY */
+.story { padding: 100px 24px; background: var(--espresso); color: white; position: relative; overflow: hidden; }
+.story::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+.story-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; }
+.story-visual { background: linear-gradient(135deg, var(--caramel), var(--rose)); border-radius: 24px; height: 450px; display: flex; align-items: center; justify-content: center; font-size: 100px; position: relative; }
+.story-visual::after { content: 'Est. 1998'; position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%); background: var(--blush); color: var(--caramel-dark); padding: 8px 24px; border-radius: 50px; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 14px; }
+.story .section-tag { background: rgba(255,255,255,0.1); color: var(--blush); }
+.story h2 { font-size: 42px; margin-bottom: 20px; }
+.story p { font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.75); margin-bottom: 16px; }
+.story-stats { display: flex; gap: 40px; margin-top: 32px; }
+.story-stat strong { display: block; font-size: 36px; color: var(--blush); font-family: 'Playfair Display', serif; }
+.story-stat span { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 500; }
+
+/* REVIEWS */
+.reviews { padding: 100px 24px; background: var(--cream); }
+.reviews-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+.reviews-scroll { display: flex; gap: 24px; overflow-x: auto; padding: 20px 0; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.reviews-scroll::-webkit-scrollbar { display: none; }
+.review-card { min-width: 340px; background: var(--white); border-radius: var(--radius); padding: 32px; text-align: left; border: 1px solid var(--border); scroll-snap-align: start; flex-shrink: 0; transition: all 0.3s; }
+.review-card:hover { box-shadow: 0 12px 36px rgba(0,0,0,0.06); }
+.review-stars { color: var(--caramel); font-size: 18px; margin-bottom: 16px; letter-spacing: 2px; }
+.review-card p { font-size: 15px; line-height: 1.7; color: var(--cocoa); margin-bottom: 20px; font-style: italic; }
+.review-author { font-weight: 700; font-size: 14px; color: var(--espresso); }
+.review-via { font-size: 12px; color: var(--cocoa); }
+
+/* ORDER CTA */
+.order-cta { padding: 100px 24px; background: linear-gradient(135deg, var(--caramel-light), var(--cream)); text-align: center; }
+.order-cta-inner { max-width: 650px; margin: 0 auto; }
+.order-cta h2 { font-size: 46px; margin-bottom: 16px; }
+.order-cta p { font-size: 17px; color: var(--cocoa); margin-bottom: 40px; line-height: 1.7; }
+.order-options { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.order-phone { margin-top: 24px; font-size: 15px; color: var(--cocoa); }
+.order-phone a { color: var(--caramel); font-weight: 700; text-decoration: none; font-size: 22px; }
+
+/* LOCATION */
+.location { padding: 80px 24px; background: var(--white); }
+.location-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+.loc-card { background: var(--linen); border-radius: var(--radius); padding: 32px; text-align: center; border: 1px solid var(--border); }
+.loc-card .icon { font-size: 40px; margin-bottom: 16px; }
+.loc-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 10px; }
+.loc-card p { font-size: 14px; color: var(--cocoa); line-height: 1.7; }
+
+footer { background: var(--espresso); color: white; padding: 48px 24px; text-align: center; }
+footer p { font-size: 13px; opacity: 0.4; margin-top: 12px; }
+footer .f-links a { color: rgba(255,255,255,0.6); text-decoration: none; margin: 0 16px; font-size: 14px; }
+footer .f-logo { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 16px; color: var(--blush); }
+
+/* AI CHAT */
+.chat-widget { position: fixed; bottom: 24px; right: 24px; z-index: 999; }
+.chat-btn { width: 64px; height: 64px; background: linear-gradient(135deg, var(--caramel), var(--caramel-dark)); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 8px 32px rgba(180,83,9,0.4); transition: all 0.3s; font-size: 28px; color: white; border: none; }
+.chat-btn:hover { transform: scale(1.1); }
+.chat-pop { position: absolute; bottom: 80px; right: 0; width: 360px; background: white; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); overflow: hidden; display: none; animation: popUp 0.3s; }
+.chat-pop.open { display: block; }
+@keyframes popUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.chat-top { background: linear-gradient(135deg, var(--caramel), var(--caramel-dark)); padding: 20px; color: white; }
+.chat-top h4 { font-family: 'Playfair Display', serif; font-size: 18px; }
+.chat-top p { font-size: 12px; opacity: 0.8; }
+.chat-body { padding: 20px; height: 280px; overflow-y: auto; }
+.bot-msg { display: flex; gap: 8px; margin-bottom: 16px; }
+.bot-msg .avi { width: 32px; height: 32px; background: var(--caramel-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.bot-msg .bbl { background: var(--linen); padding: 12px 16px; border-radius: 16px; font-size: 14px; line-height: 1.5; max-width: 260px; }
+.chat-bottom { display: flex; padding: 12px 16px; border-top: 1px solid var(--border); gap: 8px; }
+.chat-bottom input { flex: 1; border: 1px solid var(--border); border-radius: 50px; padding: 10px 16px; font-size: 14px; outline: none; font-family: inherit; }
+.chat-bottom button { background: var(--caramel); color: white; border: none; border-radius: 50px; padding: 10px 18px; cursor: pointer; font-weight: 600; font-size: 13px; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .mobile-menu { display: block; }
+  .hero-inner, .story-inner { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 40px; }
+  .hero-visual { order: -1; }
+  .menu-grid { grid-template-columns: 1fr 1fr; }
+  .pastry-grid { grid-template-columns: 1fr 1fr; }
+  .location-inner { grid-template-columns: 1fr; }
+  .section-title { font-size: 34px; }
+  .story-stats { gap: 24px; }
+  .story-visual { height: 300px; font-size: 60px; }
+}
+
+.fade-in { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-icon">&#x1F950;</span>
+      <span class="logo-text">Golden Crust</span>
+    </a>
+    <div class="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#story">Our Story</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#location">Visit</a>
+      <a href="#order" class="nav-cta">Order Online</a>
+    </div>
+    <button class="mobile-menu">&#9776;</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">&#x1F31F; Voted Best Bakery 2025</div>
+      <h1>Baked with <br><span class="script">Love & Butter</span></h1>
+      <p>Handcrafted artisan breads, pastries, and cakes baked fresh every morning. Family-owned since 1998 — your neighborhood bakery with a world of flavor.</p>
+      <div class="hero-buttons">
+        <a href="#order" class="btn-warm">&#x1F6D2; Order Online</a>
+        <a href="#menu" class="btn-outline">View Menu</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-badge-float">&#x1F525; Fresh out of the oven!</div>
+      <div class="pastry-grid">
+        <div class="pastry-card">
+          <div class="pastry-img bread">&#x1F35E;</div>
+          <div class="pastry-info"><h4>Sourdough Loaf</h4><span>$6.50</span></div>
+        </div>
+        <div class="pastry-card">
+          <div class="pastry-img cake">&#x1F382;</div>
+          <div class="pastry-info"><h4>Red Velvet Cake</h4><span>$38.00</span></div>
+        </div>
+        <div class="pastry-card">
+          <div class="pastry-img croissant">&#x1F950;</div>
+          <div class="pastry-info"><h4>Butter Croissant</h4><span>$4.25</span></div>
+        </div>
+        <div class="pastry-card">
+          <div class="pastry-img cookie">&#x1F36A;</div>
+          <div class="pastry-info"><h4>Choco Chip Cookie</h4><span>$3.00</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="featured" id="menu">
+  <div class="featured-inner">
+    <span class="section-tag">Our Menu</span>
+    <h2 class="section-title">Daily Favorites</h2>
+    <p class="section-sub">Everything is made from scratch using premium ingredients. We bake in small batches to ensure every bite is perfect.</p>
+    <div class="menu-grid">
+      <div class="menu-card fade-in">
+        <div class="menu-thumb bg1">&#x1F956;<div class="menu-badge">Bestseller</div></div>
+        <div class="menu-details"><h4>French Baguette</h4><p>Crusty outside, soft inside. Our classic baguette made with imported French flour.</p><span class="menu-price">$4.50</span></div>
+      </div>
+      <div class="menu-card fade-in">
+        <div class="menu-thumb bg2">&#x1F370;</div>
+        <div class="menu-details"><h4>Tres Leches Cake</h4><p>Moist sponge soaked in three milks, topped with whipped cream and cinnamon.</p><span class="menu-price">$42.00</span></div>
+      </div>
+      <div class="menu-card fade-in">
+        <div class="menu-thumb bg3">&#x1F9C1;<div class="menu-badge">New</div></div>
+        <div class="menu-details"><h4>Guava Pastelito</h4><p>Flaky puff pastry filled with sweet guava paste and cream cheese.</p><span class="menu-price">$3.75</span></div>
+      </div>
+      <div class="menu-card fade-in">
+        <div class="menu-thumb bg4">&#x1F96F;</div>
+        <div class="menu-details"><h4>Everything Bagel</h4><p>Hand-rolled, boiled and baked with our signature everything seasoning blend.</p><span class="menu-price">$2.50</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="story-inner">
+    <div class="story-visual">&#x1F468;&#x200D;&#x1F373;</div>
+    <div>
+      <span class="section-tag">Our Story</span>
+      <h2>Three Generations of Baking Love</h2>
+      <p>What started as Abuela's kitchen recipes in 1998 has grown into the neighborhood's favorite bakery. We still use the same family recipes, the same dedication, and the same love in every single item we bake.</p>
+      <p>Every morning at 4 AM, our ovens fire up to bring you the freshest breads, pastries, and cakes in the city. We source local ingredients whenever possible and never use preservatives.</p>
+      <div class="story-stats">
+        <div class="story-stat"><strong>27</strong><span>Years Baking</span></div>
+        <div class="story-stat"><strong>50+</strong><span>Recipes</span></div>
+        <div class="story-stat"><strong>4.6&#9733;</strong><span>Google Rating</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-inner">
+    <span class="section-tag">Customer Love</span>
+    <h2 class="section-title" style="text-align:center;">What People Say</h2>
+    <p class="section-sub" style="margin:0 auto 40px;">Hundreds of happy customers and counting!</p>
+  </div>
+  <div class="reviews-scroll" style="max-width:1200px;margin:0 auto;padding:0 24px 20px;">
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"The best sourdough in the entire city. I drive 30 minutes just for their bread. The guava pastelitos are out of this world too!"</p>
+      <div class="review-author">Carlos M. <span class="review-via">via Google</span></div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"We ordered a tres leches cake for my daughter's quinceañera and it was absolutely stunning. Everyone asked where we got it!"</p>
+      <div class="review-author">Ana R. <span class="review-via">via Yelp</span></div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"This bakery is a hidden gem! Fresh, delicious, affordable. Their morning croissants are as good as anything I had in Paris."</p>
+      <div class="review-author">David L. <span class="review-via">via Google</span></div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>"I ordered my wedding cake from here and it was PERFECT. Beautiful design, incredible flavor, and so reasonably priced."</p>
+      <div class="review-author">Jennifer W. <span class="review-via">via Google</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER CTA -->
+<section class="order-cta" id="order">
+  <div class="order-cta-inner">
+    <span class="section-tag">Order Now</span>
+    <h2>Fresh to Your Door</h2>
+    <p>Order online for pickup or local delivery. Custom cakes and catering available with 48-hour notice. Ask our AI assistant about today's specials!</p>
+    <div class="order-options">
+      <a href="#" class="btn-warm">&#x1F6D2; Order for Pickup</a>
+      <a href="#" class="btn-outline">&#x1F69A; Request Delivery</a>
+    </div>
+    <div class="order-phone">Or call us: <a href="tel:+13055551234">(305) 555-1234</a></div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="location-inner">
+    <div class="loc-card">
+      <div class="icon">&#x1F4CD;</div>
+      <h3>Find Us</h3>
+      <p>1448 SW 8th Street<br>Miami, FL 33135<br>(Calle Ocho)</p>
+    </div>
+    <div class="loc-card">
+      <div class="icon">&#x23F0;</div>
+      <h3>Hours</h3>
+      <p>Mon-Sat: 6:00 AM - 8:00 PM<br>Sunday: 7:00 AM - 4:00 PM<br>Fresh bakes at 6 AM daily!</p>
+    </div>
+    <div class="loc-card">
+      <div class="icon">&#x1F4DE;</div>
+      <h3>Get in Touch</h3>
+      <p>Phone: (305) 555-1234<br>Email: hello@goldencrust.com<br>Instagram: @goldencrust</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">Golden Crust Bakery</div>
+  <div class="f-links">
+    <a href="#">Menu</a>
+    <a href="#">Catering</a>
+    <a href="#">Custom Cakes</a>
+    <a href="#">Careers</a>
+  </div>
+  <p>&copy; 2026 Golden Crust Bakery. All rights reserved. | Powered by Scientia Thrive</p>
+</footer>
+
+<!-- AI CHAT WIDGET -->
+<div class="chat-widget">
+  <div class="chat-pop" id="chatPop">
+    <div class="chat-top">
+      <h4>&#x1F950; Golden Crust AI</h4>
+      <p>Online now &#x2022; Ask about today's menu!</p>
+    </div>
+    <div class="chat-body">
+      <div class="bot-msg">
+        <div class="avi">&#x1F950;</div>
+        <div class="bbl">Hi there! &#x1F44B; Welcome to Golden Crust! I can help you with our menu, place an order, check catering options, or answer any questions. What would you like to know?</div>
+      </div>
+    </div>
+    <div class="chat-bottom">
+      <input type="text" placeholder="Ask about our menu...">
+      <button>Send</button>
+    </div>
+  </div>
+  <button class="chat-btn" onclick="document.getElementById('chatPop').classList.toggle('open')">&#x1F4AC;</button>
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
