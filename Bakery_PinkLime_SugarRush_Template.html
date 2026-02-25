@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sugar Rush Bakery | Life's Too Short for Boring Cake</title>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#EC4899;--pink-dark:#BE185D;--pink-light:#FDF2F8;--pink-glow:rgba(236,72,153,0.15);
+  --lime:#84CC16;--lime-dark:#4D7C0F;--lime-light:#F7FEE7;
+  --yellow:#FACC15;--orange:#F97316;
+  --ink:#1A0A1E;--char:#3D1F47;--dim:#7C6B85;
+  --cream:#FFFBF5;--white:#FFFFFF;--border:rgba(236,72,153,0.12);
+  --r:24px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden}
+h1,h2,h3,.logo-t{font-family:'Dela Gothic One',sans-serif}
+img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* === NAV === */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,251,245,0.92);backdrop-filter:blur(20px);border-bottom:2px solid var(--border)}
+.ni{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-ic{width:42px;height:42px;background:linear-gradient(135deg,var(--pink),var(--orange));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;transform:rotate(-8deg)}
+.logo-t{font-size:22px;color:var(--pink-dark);letter-spacing:-0.5px}
+.nl{display:flex;gap:28px;align-items:center}
+.nl a{text-decoration:none;color:var(--dim);font-size:14px;font-weight:600;transition:color 0.3s}
+.nl a:hover{color:var(--pink)}
+.nl .cb{background:linear-gradient(135deg,var(--pink),var(--orange));color:white!important;padding:11px 26px;border-radius:50px;transition:all 0.3s!important;box-shadow:0 4px 16px var(--pink-glow)}
+.nl .cb:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(236,72,153,0.3)}
+.mm{display:none;background:none;border:none;font-size:24px;cursor:pointer}
+
+/* === HERO === */
+.hero{padding:140px 32px 100px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,var(--pink-glow),transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(132,204,22,0.08),transparent 70%);border-radius:50%}
+.hi{max-width:1260px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:white;border:2px solid var(--pink);padding:7px 18px;border-radius:50px;font-size:12px;font-weight:700;color:var(--pink);margin-bottom:28px;box-shadow:0 4px 16px var(--pink-glow)}
+.hero-badge .pulse{width:8px;height:8px;background:var(--lime);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(132,204,22,0.6)}70%{box-shadow:0 0 0 10px rgba(132,204,22,0)}}
+.hero h1{font-size:56px;line-height:1.05;margin-bottom:22px;color:var(--ink)}
+.hero h1 .grad{background:linear-gradient(135deg,var(--pink),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-p{font-size:18px;line-height:1.8;color:var(--dim);margin-bottom:36px;max-width:480px}
+.hbtns{display:flex;gap:14px;margin-bottom:44px;flex-wrap:wrap}
+.btn{padding:16px 34px;border-radius:50px;text-decoration:none;font-weight:700;font-size:14px;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:inherit}
+.btn-p{background:linear-gradient(135deg,var(--pink),var(--orange));color:white;box-shadow:0 6px 24px var(--pink-glow)}.btn-p:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(236,72,153,0.3)}
+.btn-g{background:var(--lime);color:var(--lime-dark)}.btn-g:hover{background:var(--lime-dark);color:white;transform:translateY(-3px)}
+.trust-row{display:flex;gap:28px;flex-wrap:wrap}
+.trust-i{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--dim);font-weight:600}
+
+/* HERO IMAGE GRID */
+.hr{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px}
+.hr-card{border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer;transition:all 0.4s;box-shadow:0 8px 32px rgba(0,0,0,0.08)}
+.hr-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 16px 48px rgba(0,0,0,0.12)}
+.hr-card:nth-child(1){grid-row:span 2;height:100%}
+.hr-card img{height:100%;min-height:200px}
+.hr-tag{position:absolute;top:12px;left:12px;background:var(--pink);color:white;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.hr-tag.green{background:var(--lime);color:var(--lime-dark)}
+.hr-tag.yellow{background:var(--yellow);color:var(--ink)}
+.hr-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(26,10,30,0.85));padding:16px;color:white}
+.hr-overlay h4{font-family:'Dela Gothic One',sans-serif;font-size:15px;margin-bottom:2px}
+.hr-overlay span{font-size:13px;opacity:0.8}
+
+/* === MENU === */
+.menu{padding:100px 32px;background:var(--white)}
+.mi{max-width:1260px;margin:0 auto}
+.tag{display:inline-block;background:linear-gradient(135deg,var(--pink-light),rgba(132,204,22,0.08));color:var(--pink);padding:7px 18px;border-radius:50px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+.stit{font-size:46px;color:var(--ink);margin-bottom:12px}
+.ssub{font-size:16px;color:var(--dim);max-width:500px;margin-bottom:60px;line-height:1.8}
+.menu-tabs{display:flex;gap:10px;margin-bottom:40px;flex-wrap:wrap}
+.mtab{padding:10px 22px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.3s;border:2px solid var(--border);background:white;color:var(--dim)}
+.mtab.active,.mtab:hover{background:var(--pink);color:white;border-color:var(--pink)}
+.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.mc{border-radius:var(--r);overflow:hidden;background:white;border:2px solid transparent;transition:all 0.4s;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+.mc:hover{border-color:var(--pink);transform:translateY(-6px);box-shadow:0 16px 48px rgba(236,72,153,0.1)}
+.mc-img{height:200px;position:relative;overflow:hidden}
+.mc-img img{transition:transform 0.5s}
+.mc:hover .mc-img img{transform:scale(1.08)}
+.mc-badge{position:absolute;top:10px;right:10px;background:var(--pink);color:white;padding:4px 12px;border-radius:50px;font-size:10px;font-weight:700;text-transform:uppercase}
+.mc-badge.g{background:var(--lime);color:var(--lime-dark)}.mc-badge.y{background:var(--yellow);color:var(--ink)}.mc-badge.o{background:var(--orange);color:white}
+.mc-info{padding:18px}
+.mc-info h3{font-size:17px;margin-bottom:4px;font-family:'DM Sans',sans-serif;font-weight:700}
+.mc-info p{font-size:13px;color:var(--dim);line-height:1.5;margin-bottom:10px}
+.mc-foot{display:flex;justify-content:space-between;align-items:center}
+.mc-price{font-weight:800;font-size:17px;color:var(--pink)}
+.mc-add{width:32px;height:32px;border-radius:50%;background:var(--pink-light);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--pink);transition:all 0.3s;border:none;cursor:pointer}
+.mc-add:hover{background:var(--pink);color:white}
+
+/* === ABOUT === */
+.about{padding:100px 32px;background:var(--pink-light);position:relative;overflow:hidden}
+.about::before{content:'🧁';position:absolute;top:40px;right:60px;font-size:120px;opacity:0.06;transform:rotate(15deg)}
+.ab-in{max-width:1260px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
+.ab-img{border-radius:var(--r);overflow:hidden;height:480px;box-shadow:0 24px 64px rgba(236,72,153,0.12);position:relative}
+.ab-img img{height:100%}
+.ab-float{position:absolute;bottom:20px;left:20px;background:white;padding:16px 22px;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.1);display:flex;align-items:center;gap:12px}
+.ab-float .stars{color:var(--yellow);font-size:16px}
+.ab-float strong{font-size:14px}
+.ab-float span{font-size:12px;color:var(--dim)}
+.about h2{font-size:44px;margin-bottom:20px}
+.about .ap{font-size:16px;color:var(--dim);line-height:1.9;margin-bottom:16px}
+.ab-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.ab-stat{background:white;border-radius:16px;padding:20px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.03)}
+.ab-stat strong{display:block;font-family:'Dela Gothic One',sans-serif;font-size:28px;background:linear-gradient(135deg,var(--pink),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ab-stat span{font-size:12px;color:var(--dim);font-weight:600}
+
+/* === REVIEWS === */
+.reviews{padding:100px 32px;background:var(--white)}
+.rv-in{max-width:1260px;margin:0 auto}
+.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rc{background:white;border:2px solid var(--border);border-radius:var(--r);padding:28px;transition:all 0.3s;position:relative}
+.rc:hover{border-color:var(--pink);box-shadow:0 12px 36px var(--pink-glow)}
+.rc::before{content:'❝';position:absolute;top:16px;right:20px;font-size:36px;color:var(--pink);opacity:0.2}
+.rc-stars{color:var(--yellow);font-size:15px;margin-bottom:12px;letter-spacing:2px}
+.rc blockquote{font-size:15px;line-height:1.7;color:var(--char);margin-bottom:18px}
+.rc-who{display:flex;align-items:center;gap:10px}
+.rc-av{width:36px;height:36px;border-radius:50%;overflow:hidden}
+.rc-av img{width:100%;height:100%}
+.rc-name{font-weight:700;font-size:13px}.rc-via{font-size:11px;color:var(--dim)}
+
+/* === CTA === */
+.cta{padding:100px 32px;background:linear-gradient(135deg,var(--pink),var(--orange));text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,255,255,0.08),transparent 60%);border-radius:50%}
+.cta-in{max-width:600px;margin:0 auto;position:relative;z-index:1}
+.cta h2{font-size:48px;color:white;margin-bottom:16px}
+.cta p{font-size:17px;color:rgba(255,255,255,0.85);margin-bottom:36px;line-height:1.8}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-w{background:white;color:var(--pink-dark);padding:16px 34px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px}
+.btn-w:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,0.15)}
+.btn-wh{background:transparent;color:white;border:2px solid rgba(255,255,255,0.4);padding:16px 34px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;transition:all 0.3s}
+.btn-wh:hover{background:rgba(255,255,255,0.15);border-color:white}
+.cta-phone{margin-top:24px;color:rgba(255,255,255,0.7);font-size:14px}
+.cta-phone a{color:white;font-weight:700;font-size:20px;text-decoration:none}
+
+/* === CONTACT === */
+.contact{padding:80px 32px;background:var(--cream)}
+.ct-in{max-width:1260px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ctc{background:white;border:2px solid var(--border);border-radius:var(--r);padding:28px;text-align:center;transition:all 0.3s}
+.ctc:hover{border-color:var(--pink);box-shadow:0 8px 24px var(--pink-glow)}
+.ctc .ic{font-size:36px;margin-bottom:12px}
+.ctc h3{font-size:18px;margin-bottom:8px;font-family:'DM Sans',sans-serif;font-weight:700}
+.ctc p{font-size:14px;color:var(--dim);line-height:1.7}
+
+/* === FOOTER === */
+footer{background:var(--ink);padding:48px 32px;text-align:center}
+footer .ft{font-size:24px;color:var(--pink);margin-bottom:14px}
+footer a{color:var(--dim);text-decoration:none;margin:0 16px;font-size:12px;font-weight:600;letter-spacing:0.5px}
+footer .cp{color:rgba(255,255,255,0.15);font-size:11px;margin-top:20px}
+
+/* === CHATBOT === */
+.cw{position:fixed;bottom:24px;right:24px;z-index:999}
+.ctgl{width:62px;height:62px;background:linear-gradient(135deg,var(--pink),var(--orange));border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 32px rgba(236,72,153,0.3);transition:all 0.3s;font-size:26px;color:white;border:none}
+.ctgl:hover{transform:scale(1.1)}
+.chbox{position:absolute;bottom:78px;right:0;width:370px;background:white;border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,0.15);overflow:hidden;display:none;animation:up 0.3s}
+.chbox.on{display:block}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.chh{background:linear-gradient(135deg,var(--pink),var(--orange));padding:20px;color:white}
+.chh h4{font-family:'Dela Gothic One',sans-serif;font-size:16px}
+.chh p{font-size:12px;opacity:0.8}
+.chm{padding:20px;height:260px;overflow-y:auto}
+.chbot{display:flex;gap:8px;margin-bottom:14px}
+.chbot .av{width:30px;height:30px;background:var(--pink-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.chbot .bbl{background:var(--pink-light);padding:12px 16px;border-radius:16px;font-size:13px;line-height:1.6;max-width:260px}
+.chf{display:flex;padding:12px;border-top:1px solid var(--border);gap:8px}
+.chf input{flex:1;border:2px solid var(--border);border-radius:50px;padding:10px 16px;font-size:13px;outline:none;font-family:inherit;transition:border 0.3s}
+.chf input:focus{border-color:var(--pink)}
+.chf button{background:linear-gradient(135deg,var(--pink),var(--orange));color:white;border:none;border-radius:50px;padding:10px 18px;cursor:pointer;font-weight:700;font-size:12px}
+
+@media(max-width:900px){
+  .nl{display:none}.mm{display:block}
+  .hi,.ab-in{grid-template-columns:1fr}
+  .mg{grid-template-columns:1fr 1fr}
+  .rg,.ct-in{grid-template-columns:1fr}
+  .hero h1{font-size:38px}
+  .stit{font-size:34px}
+}
+.fi{opacity:0;transform:translateY(28px);transition:all 0.6s}.fi.v{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav><div class="ni">
+  <a href="#" class="logo"><div class="logo-ic">🧁</div><span class="logo-t">Sugar Rush</span></a>
+  <div class="nl"><a href="#menu">Menu</a><a href="#about">About</a><a href="#reviews">Reviews</a><a href="#order" class="cb">Order Now 🛒</a></div>
+  <button class="mm">☰</button>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero"><div class="hi">
+  <div>
+    <div class="hero-badge"><span class="pulse"></span> Open Today &mdash; Fresh Batches Every Hour!</div>
+    <h1>Life's too short for <span class="grad">boring cake</span></h1>
+    <p class="hero-p">Bold flavors, crazy-beautiful designs, and the kind of pastries that break the internet. Family-owned in NYC since 2012. Come hungry, leave happy.</p>
+    <div class="hbtns">
+      <a href="#order" class="btn btn-p">🛒 Order for Pickup</a>
+      <a href="tel:+12125559876" class="btn btn-g">📞 (212) 555-9876</a>
+    </div>
+    <div class="trust-row">
+      <div class="trust-i">⭐ 4.8 on Google</div>
+      <div class="trust-i">🚗 Free delivery $50+</div>
+      <div class="trust-i">🎂 Custom cakes 48hr</div>
+    </div>
+  </div>
+  <div class="hr">
+    <div class="hr-card">
+      <img src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=600&h=800&fit=crop" alt="Colorful layer cake">
+      <span class="hr-tag">Signature</span>
+      <div class="hr-overlay"><h4>Rainbow Layer Cake</h4><span>From $48</span></div>
+    </div>
+    <div class="hr-card">
+      <img src="https://images.unsplash.com/photo-1587668178277-295251f900ce?w=600&h=400&fit=crop" alt="Frosted cupcakes">
+      <span class="hr-tag green">Popular</span>
+      <div class="hr-overlay"><h4>Gourmet Cupcakes</h4><span>$4.50 each</span></div>
+    </div>
+    <div class="hr-card">
+      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&h=400&fit=crop" alt="Fresh baked bread">
+      <span class="hr-tag yellow">Daily</span>
+      <div class="hr-overlay"><h4>Artisan Breads</h4><span>From $6</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- MENU -->
+<section class="menu" id="menu"><div class="mi">
+  <span class="tag">🍰 Our Menu</span>
+  <h2 class="stit">Treats that slap</h2>
+  <p class="ssub">Every item made from scratch daily using real butter, Madagascar vanilla, and zero artificial anything. You can taste the difference.</p>
+  <div class="menu-tabs">
+    <div class="mtab active">All</div><div class="mtab">Cakes</div><div class="mtab">Cupcakes</div><div class="mtab">Pastries</div><div class="mtab">Breads</div><div class="mtab">Drinks</div>
+  </div>
+  <div class="mg">
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=400&fit=crop" alt="Chocolate cake"><span class="mc-badge">Bestseller</span></div>
+      <div class="mc-info"><h3>Death by Chocolate</h3><p>Triple chocolate layers, ganache drip, chocolate shavings</p><div class="mc-foot"><span class="mc-price">$52</span><button class="mc-add">+</button></div></div>
+    </div>
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=500&h=400&fit=crop" alt="Strawberry cake"><span class="mc-badge g">New</span></div>
+      <div class="mc-info"><h3>Strawberry Dream</h3><p>Fresh strawberry layers, cream cheese frosting, berry compote</p><div class="mc-foot"><span class="mc-price">$48</span><button class="mc-add">+</button></div></div>
+    </div>
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1486427944544-d2c246c4df14?w=500&h=400&fit=crop" alt="Croissants"><span class="mc-badge y">Daily Fresh</span></div>
+      <div class="mc-info"><h3>Butter Croissants</h3><p>48-layer lamination, French butter, golden & flaky</p><div class="mc-foot"><span class="mc-price">$5.25</span><button class="mc-add">+</button></div></div>
+    </div>
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?w=500&h=400&fit=crop" alt="Colorful macarons"><span class="mc-badge o">Fan Fave</span></div>
+      <div class="mc-info"><h3>French Macarons</h3><p>Assorted flavors: lavender, pistachio, raspberry, salted caramel</p><div class="mc-foot"><span class="mc-price">$3.50</span><button class="mc-add">+</button></div></div>
+    </div>
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=500&h=400&fit=crop" alt="Cinnamon rolls"><span class="mc-badge">Bestseller</span></div>
+      <div class="mc-info"><h3>Giant Cinnamon Roll</h3><p>Warm, gooey, cream cheese iced. Big enough to share (but you won't)</p><div class="mc-foot"><span class="mc-price">$7.00</span><button class="mc-add">+</button></div></div>
+    </div>
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1612203985729-70726954388c?w=500&h=400&fit=crop" alt="Donuts"><span class="mc-badge g">New</span></div>
+      <div class="mc-info"><h3>Gourmet Donuts</h3><p>Brioche dough, unique glazes: matcha, ube, passion fruit, espresso</p><div class="mc-foot"><span class="mc-price">$5.00</span><button class="mc-add">+</button></div></div>
+    </div>
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=500&h=400&fit=crop" alt="Cookies"><span class="mc-badge y">Classic</span></div>
+      <div class="mc-info"><h3>NYC Cookie Box</h3><p>6-pack: choc chip, red velvet, snickerdoodle, oatmeal, PB, s'mores</p><div class="mc-foot"><span class="mc-price">$24</span><button class="mc-add">+</button></div></div>
+    </div>
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=500&h=400&fit=crop" alt="Tiramisu"><span class="mc-badge o">Premium</span></div>
+      <div class="mc-info"><h3>Classic Tiramisu</h3><p>Espresso-soaked ladyfingers, mascarpone, cocoa dust. Serves 6-8</p><div class="mc-foot"><span class="mc-price">$42</span><button class="mc-add">+</button></div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ABOUT -->
+<section class="about" id="about"><div class="ab-in">
+  <div class="ab-img">
+    <img src="https://images.unsplash.com/photo-1556217477-d325251ece38?w=700&h=500&fit=crop" alt="Baker decorating cake">
+    <div class="ab-float"><div><div class="stars">⭐⭐⭐⭐⭐</div><strong>4.8 / 5</strong><br><span>1,200+ reviews</span></div></div>
+  </div>
+  <div>
+    <span class="tag">Our Story</span>
+    <h2>Started with a<br>kitchen & a dream</h2>
+    <p class="ap">Sugar Rush started in 2012 when Maria & Carlos Torres turned their Brooklyn apartment kitchen into a cupcake operation. Word spread fast. Lines formed. The rest is sweet history.</p>
+    <p class="ap">Today we bake over 300 items daily from our East Village shop, using the same recipes that started it all: real butter, local eggs, no shortcuts. Every cake is still hand-decorated. Every cookie is baked with love and a little bit of chaos.</p>
+    <div class="ab-stats">
+      <div class="ab-stat"><strong>13</strong><span>Years Baking</span></div>
+      <div class="ab-stat"><strong>300+</strong><span>Items Daily</span></div>
+      <div class="ab-stat"><strong>50K</strong><span>Happy Customers</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews"><div class="rv-in">
+  <span class="tag">💬 Reviews</span>
+  <h2 class="stit" style="margin-bottom:60px">People are obsessed</h2>
+  <div class="rg">
+    <div class="rc fi"><div class="rc-stars">⭐⭐⭐⭐⭐</div><blockquote>"The Death by Chocolate cake made my daughter's birthday unforgettable. Everyone at the party was asking where we got it. Sugar Rush is THE bakery in NYC."</blockquote><div class="rc-who"><div class="rc-av" style="background:var(--pink);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px">J</div><div><div class="rc-name">Jessica L.</div><div class="rc-via">Google Review</div></div></div></div>
+    <div class="rc fi"><div class="rc-stars">⭐⭐⭐⭐⭐</div><blockquote>"I ordered macarons for my wedding and they were PERFECT. Beautiful colors, amazing flavors, and they arrived in gorgeous packaging. Worth every penny."</blockquote><div class="rc-who"><div class="rc-av" style="background:var(--lime);display:flex;align-items:center;justify-content:center;color:var(--lime-dark);font-weight:700;font-size:14px">A</div><div><div class="rc-name">Amanda S.</div><div class="rc-via">Yelp Review</div></div></div></div>
+    <div class="rc fi"><div class="rc-stars">⭐⭐⭐⭐⭐</div><blockquote>"The cinnamon rolls are insane. Like, I-woke-up-at-6am-on-a-Saturday-to-stand-in-line insane. And the AI chatbot on the site let me pre-order at midnight. Game changer."</blockquote><div class="rc-who"><div class="rc-av" style="background:var(--orange);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px">D</div><div><div class="rc-name">David R.</div><div class="rc-via">Google Review</div></div></div></div>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="cta" id="order"><div class="cta-in">
+  <h2>Ready to get your sugar fix?</h2>
+  <p>Order online for pickup or delivery. Custom cakes need 48 hours notice. Our AI assistant can help you choose the perfect treat!</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-w">🛒 Order Pickup</a>
+    <a href="#" class="btn-wh">🚗 Order Delivery</a>
+  </div>
+  <div class="cta-phone">Or call: <a href="tel:+12125559876">(212) 555-9876</a></div>
+</div></section>
+
+<!-- CONTACT -->
+<section class="contact"><div class="ct-in">
+  <div class="ctc"><div class="ic">📍</div><h3>Find Us</h3><p>247 East 10th Street<br>New York, NY 10003<br>East Village</p></div>
+  <div class="ctc"><div class="ic">🕐</div><h3>Hours</h3><p>Mon-Fri: 7 AM - 9 PM<br>Sat-Sun: 8 AM - 10 PM<br>Holidays: 9 AM - 6 PM</p></div>
+  <div class="ctc"><div class="ic">📱</div><h3>Get In Touch</h3><p>Phone: (212) 555-9876<br>hello@sugarrushnyc.com<br>@sugarrushnyc</p></div>
+</div></section>
+
+<footer>
+  <div class="ft">Sugar Rush</div>
+  <div><a href="#">Menu</a><a href="#">Custom Cakes</a><a href="#">Catering</a><a href="#">Careers</a><a href="#">Gift Cards</a></div>
+  <p class="cp">&copy; 2026 Sugar Rush Bakery. All rights reserved. | Powered by Scientia Thrive</p>
+</footer>
+
+<!-- CHATBOT -->
+<div class="cw">
+  <div class="chbox" id="chb">
+    <div class="chh"><h4>🧁 Sugar Rush AI</h4><p>Online &bull; Order help & recommendations</p></div>
+    <div class="chm"><div class="chbot"><div class="av">🧁</div><div class="bbl">Hey there! 🎉 Welcome to Sugar Rush! I can help you place an order, recommend treats, check custom cake availability, or answer any questions. What sounds good?</div></div></div>
+    <div class="chf"><input placeholder="What are you craving?"><button>Send</button></div>
+  </div>
+  <button class="ctgl" onclick="document.getElementById('chb').classList.toggle('on')">💬</button>
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')})},{threshold:0.08});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

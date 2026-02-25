@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloom Bakehouse | Where Every Bite is a Celebration</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lavender:#8B5CF6;--lavender-dark:#6D28D9;--lavender-light:#F5F3FF;--lavender-glow:rgba(139,92,246,0.12);
+  --peach:#FB923C;--peach-light:#FFF7ED;--peach-dark:#EA580C;
+  --rose:#F43F5E;--rose-light:#FFF1F2;
+  --mint:#34D399;--mint-light:#ECFDF5;
+  --sky:#38BDF8;
+  --ink:#1E1033;--char:#3D2B58;--dim:#7E6C97;--mist:#B0A3C5;
+  --cream:#FEFCF9;--white:#FFFFFF;--border:rgba(139,92,246,0.1);
+  --r:24px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Karla',sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden}
+h1,h2,h3{font-family:'Fraunces',serif}
+img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* AMBIENT PATTERN */
+body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:
+  radial-gradient(circle at 15% 20%,rgba(139,92,246,0.04) 0,transparent 50%),
+  radial-gradient(circle at 85% 80%,rgba(251,146,60,0.04) 0,transparent 50%),
+  radial-gradient(circle at 50% 50%,rgba(244,63,94,0.02) 0,transparent 60%);
+pointer-events:none;z-index:0}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(254,252,249,0.92);backdrop-filter:blur(20px);border-bottom:2px solid var(--border)}
+.ni{max-width:1260px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-ic{font-size:28px}
+.logo-t{font-family:'Fraunces',serif;font-size:24px;color:var(--lavender-dark);font-weight:800}
+.nl{display:flex;gap:28px;align-items:center}
+.nl a{text-decoration:none;color:var(--dim);font-size:14px;font-weight:600;transition:color 0.3s}
+.nl a:hover{color:var(--lavender)}
+.nl .cb{background:linear-gradient(135deg,var(--lavender),var(--peach));color:white!important;padding:11px 26px;border-radius:50px;transition:all 0.3s!important;box-shadow:0 4px 16px var(--lavender-glow)}
+.nl .cb:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(139,92,246,0.25)}
+.mm{display:none;background:none;border:none;font-size:24px;cursor:pointer}
+
+/* HERO */
+.hero{padding:140px 32px 100px;position:relative;overflow:hidden;z-index:1}
+.hi{max-width:1260px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:white;border:2px solid var(--lavender-light);padding:7px 18px;border-radius:50px;font-size:12px;font-weight:700;color:var(--lavender);margin-bottom:24px;box-shadow:0 2px 12px var(--lavender-glow)}
+.hero h1{font-size:54px;line-height:1.08;margin-bottom:22px}
+.hero h1 .g1{background:linear-gradient(135deg,var(--lavender),var(--lavender-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 .g2{background:linear-gradient(135deg,var(--peach),var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-p{font-size:17px;line-height:1.9;color:var(--dim);margin-bottom:36px;max-width:480px}
+.hbtns{display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap}
+.btn{padding:16px 32px;border-radius:50px;text-decoration:none;font-weight:700;font-size:14px;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:inherit}
+.btn-lav{background:linear-gradient(135deg,var(--lavender),var(--peach));color:white;box-shadow:0 6px 24px var(--lavender-glow)}.btn-lav:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(139,92,246,0.25)}
+.btn-pch{background:var(--peach-light);color:var(--peach-dark)}.btn-pch:hover{background:var(--peach);color:white;transform:translateY(-3px)}
+.btn-mn{background:var(--mint-light);color:#059669}.btn-mn:hover{background:var(--mint);color:white;transform:translateY(-3px)}
+.trust-row{display:flex;gap:24px;flex-wrap:wrap}
+.trust-i{display:flex;align-items:center;gap:6px;background:white;padding:6px 14px;border-radius:50px;font-size:12px;color:var(--dim);font-weight:600;border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,0.02)}
+
+/* HERO IMAGE BENTO */
+.hr{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:520px}
+.hb-card{border-radius:20px;overflow:hidden;position:relative;cursor:pointer;transition:all 0.4s;box-shadow:0 8px 28px rgba(0,0,0,0.06)}
+.hb-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.1)}
+.hb-card:nth-child(1){grid-row:span 2}
+.hb-tag{position:absolute;top:12px;left:12px;padding:5px 14px;border-radius:50px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;z-index:2}
+.hb-tag.lav{background:var(--lavender);color:white}
+.hb-tag.pch{background:var(--peach);color:white}
+.hb-tag.mnt{background:var(--mint);color:white}
+.hb-ov{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(30,16,51,0.8));padding:14px 16px;color:white}
+.hb-ov h4{font-family:'Fraunces',serif;font-size:15px;margin-bottom:2px}
+.hb-ov span{font-size:13px;opacity:0.85;font-weight:600}
+
+/* MENU */
+.menu{padding:100px 32px;background:var(--white);position:relative;z-index:1}
+.mi{max-width:1260px;margin:0 auto}
+.tag{display:inline-flex;align-items:center;gap:6px;background:var(--lavender-light);color:var(--lavender-dark);padding:7px 18px;border-radius:50px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+.stit{font-size:46px;color:var(--ink);margin-bottom:14px}
+.ssub{font-size:16px;color:var(--dim);max-width:480px;margin-bottom:56px;line-height:1.8}
+.cat-row{display:flex;gap:8px;margin-bottom:36px;flex-wrap:wrap}
+.cat{padding:9px 20px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.3s;border:2px solid var(--border);background:white;color:var(--dim)}
+.cat.active{background:var(--lavender);color:white;border-color:var(--lavender)}
+.cat:hover:not(.active){border-color:var(--lavender);color:var(--lavender)}
+.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.mc{border-radius:var(--r);overflow:hidden;background:white;border:2px solid transparent;transition:all 0.4s;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.03)}
+.mc:hover{transform:translateY(-6px);box-shadow:0 16px 48px var(--lavender-glow)}
+.mc:nth-child(1):hover{border-color:var(--lavender)}
+.mc:nth-child(2):hover{border-color:var(--peach)}
+.mc:nth-child(3):hover{border-color:var(--rose)}
+.mc:nth-child(4):hover{border-color:var(--mint)}
+.mc:nth-child(5):hover{border-color:var(--sky)}
+.mc:nth-child(6):hover{border-color:var(--peach)}
+.mc:nth-child(7):hover{border-color:var(--lavender)}
+.mc:nth-child(8):hover{border-color:var(--rose)}
+.mc-img{height:200px;position:relative;overflow:hidden}
+.mc-img img{transition:transform 0.5s}
+.mc:hover .mc-img img{transform:scale(1.08)}
+.mc-badge{position:absolute;top:10px;right:10px;padding:4px 12px;border-radius:50px;font-size:10px;font-weight:700;text-transform:uppercase;color:white}
+.mc-badge.lav{background:var(--lavender)}.mc-badge.pch{background:var(--peach)}.mc-badge.rs{background:var(--rose)}.mc-badge.mn{background:var(--mint)}.mc-badge.sk{background:var(--sky)}
+.mc-info{padding:16px}
+.mc-info h3{font-size:16px;margin-bottom:4px;font-family:'Karla',sans-serif;font-weight:700}
+.mc-info p{font-size:12px;color:var(--dim);line-height:1.5;margin-bottom:10px}
+.mc-foot{display:flex;justify-content:space-between;align-items:center}
+.mc-price{font-weight:800;font-size:16px;color:var(--lavender)}
+.mc-cart{width:30px;height:30px;border-radius:50%;background:var(--lavender-light);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--lavender);transition:all 0.3s;border:none;cursor:pointer}
+.mc-cart:hover{background:var(--lavender);color:white}
+
+/* ABOUT */
+.about{padding:100px 32px;background:linear-gradient(135deg,var(--lavender-light),var(--peach-light),var(--rose-light));position:relative;z-index:1;overflow:hidden}
+.about::before{content:'🌸';position:absolute;top:40px;right:80px;font-size:100px;opacity:0.06;transform:rotate(20deg)}
+.ab-in{max-width:1260px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+.ab-img{border-radius:var(--r);overflow:hidden;height:480px;position:relative;box-shadow:0 24px 64px rgba(139,92,246,0.1)}
+.ab-float{position:absolute;bottom:20px;right:20px;background:white;border-radius:16px;padding:16px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.1);display:flex;flex-direction:column;align-items:center;gap:4px}
+.ab-float strong{font-family:'Fraunces',serif;font-size:28px;background:linear-gradient(135deg,var(--lavender),var(--peach));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ab-float span{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--dim);font-weight:600}
+.about h2{font-size:44px;margin-bottom:20px}
+.about .ap{font-size:16px;color:var(--dim);line-height:1.9;margin-bottom:14px}
+.vals{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.val{background:white;border-radius:16px;padding:20px;text-align:center;border:1px solid var(--border);transition:all 0.3s}
+.val:hover{box-shadow:0 8px 24px var(--lavender-glow)}
+.val .vi{font-size:28px;margin-bottom:6px}
+.val h4{font-size:13px;font-family:'Karla',sans-serif;font-weight:700;color:var(--ink)}
+.val p{font-size:11px;color:var(--mist)}
+
+/* REVIEWS */
+.reviews{padding:100px 32px;background:var(--white);position:relative;z-index:1}
+.rv-in{max-width:1260px;margin:0 auto}
+.rvg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rvc{border-radius:var(--r);padding:28px;transition:all 0.3s;cursor:pointer;border:2px solid var(--border)}
+.rvc:nth-child(1){background:var(--lavender-light)}.rvc:nth-child(1):hover{border-color:var(--lavender)}
+.rvc:nth-child(2){background:var(--peach-light)}.rvc:nth-child(2):hover{border-color:var(--peach)}
+.rvc:nth-child(3){background:var(--mint-light)}.rvc:nth-child(3):hover{border-color:var(--mint)}
+.rvc:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,0.04)}
+.rvc-stars{font-size:14px;margin-bottom:14px;letter-spacing:2px}
+.rvc blockquote{font-size:15px;line-height:1.7;color:var(--char);margin-bottom:18px;font-family:'Fraunces',serif;font-style:italic}
+.rvc-who{display:flex;align-items:center;gap:10px}
+.rvc-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:white}
+.rvc-av.a1{background:var(--lavender)}.rvc-av.a2{background:var(--peach)}.rvc-av.a3{background:var(--mint)}
+.rvc-name{font-weight:700;font-size:13px}.rvc-via{font-size:11px;color:var(--mist)}
+
+/* CTA */
+.cta{padding:100px 32px;background:linear-gradient(135deg,var(--lavender),var(--peach),var(--rose));text-align:center;position:relative;z-index:1;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.cta-in{max-width:600px;margin:0 auto;position:relative;z-index:1}
+.cta h2{font-size:48px;color:white;margin-bottom:16px}
+.cta p{font-size:17px;color:rgba(255,255,255,0.85);margin-bottom:36px;line-height:1.8}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-w{background:white;color:var(--lavender-dark);padding:16px 34px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px}
+.btn-w:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,0.15)}
+.btn-wh{background:transparent;color:white;border:2px solid rgba(255,255,255,0.4);padding:16px 34px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;transition:all 0.3s}
+.btn-wh:hover{background:rgba(255,255,255,0.15);border-color:white}
+.cta-ph{margin-top:24px;color:rgba(255,255,255,0.7);font-size:14px}
+.cta-ph a{color:white;font-weight:700;font-size:20px;text-decoration:none}
+
+/* CONTACT */
+.contact{padding:80px 32px;background:var(--cream);position:relative;z-index:1}
+.ct-in{max-width:1260px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ctc{background:white;border:2px solid var(--border);border-radius:var(--r);padding:28px;text-align:center;transition:all 0.3s}
+.ctc:nth-child(1):hover{border-color:var(--lavender);box-shadow:0 8px 24px var(--lavender-glow)}
+.ctc:nth-child(2):hover{border-color:var(--peach);box-shadow:0 8px 24px rgba(251,146,60,0.12)}
+.ctc:nth-child(3):hover{border-color:var(--mint);box-shadow:0 8px 24px rgba(52,211,153,0.12)}
+.ctc .ic{font-size:36px;margin-bottom:12px}
+.ctc h3{font-size:18px;margin-bottom:8px;font-family:'Karla',sans-serif;font-weight:700}
+.ctc p{font-size:14px;color:var(--dim);line-height:1.7}
+
+footer{background:var(--ink);padding:48px 32px;text-align:center;position:relative;z-index:1}
+footer .ft{font-family:'Fraunces',serif;font-size:28px;background:linear-gradient(135deg,var(--lavender),var(--peach));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:14px}
+footer a{color:var(--mist);text-decoration:none;margin:0 16px;font-size:12px;font-weight:600}
+footer .cp{color:rgba(255,255,255,0.15);font-size:11px;margin-top:20px}
+
+/* CHAT */
+.cw{position:fixed;bottom:24px;right:24px;z-index:999}
+.ctgl{width:62px;height:62px;background:linear-gradient(135deg,var(--lavender),var(--peach));border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 32px var(--lavender-glow);transition:all 0.3s;font-size:26px;color:white;border:none}
+.ctgl:hover{transform:scale(1.1)}
+.chbox{position:absolute;bottom:78px;right:0;width:370px;background:white;border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,0.12);overflow:hidden;display:none;animation:up 0.3s}
+.chbox.on{display:block}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.chh{background:linear-gradient(135deg,var(--lavender),var(--peach));padding:20px;color:white}
+.chh h4{font-family:'Fraunces',serif;font-size:17px}
+.chh p{font-size:12px;opacity:0.85}
+.chm{padding:20px;height:260px;overflow-y:auto}
+.chbot{display:flex;gap:8px;margin-bottom:14px}
+.chbot .av{width:30px;height:30px;background:var(--lavender-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.chbot .bbl{background:var(--lavender-light);padding:12px 16px;border-radius:16px;font-size:13px;line-height:1.6;max-width:260px;color:var(--char)}
+.chf{display:flex;padding:12px;border-top:1px solid var(--border);gap:8px}
+.chf input{flex:1;border:2px solid var(--border);border-radius:50px;padding:10px 16px;font-size:13px;outline:none;font-family:inherit;transition:border 0.3s}
+.chf input:focus{border-color:var(--lavender)}
+.chf button{background:linear-gradient(135deg,var(--lavender),var(--peach));color:white;border:none;border-radius:50px;padding:10px 18px;cursor:pointer;font-weight:700;font-size:12px}
+
+@media(max-width:900px){
+  .nl{display:none}.mm{display:block}
+  .hi,.ab-in{grid-template-columns:1fr}
+  .mg{grid-template-columns:1fr 1fr}
+  .rvg,.ct-in{grid-template-columns:1fr}
+  .hero h1{font-size:38px}
+  .stit{font-size:34px}
+  .hr{height:380px}
+}
+.fi{opacity:0;transform:translateY(28px);transition:all 0.6s}.fi.v{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav><div class="ni">
+  <a href="#" class="logo"><span class="logo-ic">🌸</span><span class="logo-t">Bloom Bakehouse</span></a>
+  <div class="nl"><a href="#menu">Menu</a><a href="#about">About</a><a href="#reviews">Reviews</a><a href="#order" class="cb">Order Now 💜</a></div>
+  <button class="mm">☰</button>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero"><div class="hi">
+  <div>
+    <div class="hero-chip">🌷 Austin's Most Colorful Bakery</div>
+    <h1>Every bite is a <span class="g1">celebration</span> of <span class="g2">flavor</span></h1>
+    <p class="hero-p">Whimsical cakes, dreamy pastries, and show-stopping custom creations. We believe dessert should be as joyful to look at as it is to taste.</p>
+    <div class="hbtns">
+      <a href="#order" class="btn btn-lav">🛒 Order Online</a>
+      <a href="#menu" class="btn btn-pch">📖 See Menu</a>
+      <a href="tel:+15125559999" class="btn btn-mn">📞 Call Us</a>
+    </div>
+    <div class="trust-row">
+      <div class="trust-i">⭐ 4.8 Google Rating</div>
+      <div class="trust-i">🎂 Custom Cakes 48hr</div>
+      <div class="trust-i">🚚 Local Delivery</div>
+    </div>
+  </div>
+  <div class="hr">
+    <div class="hb-card">
+      <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?w=600&h=800&fit=crop" alt="Beautiful decorated cake">
+      <span class="hb-tag lav">Signature</span>
+      <div class="hb-ov"><h4>Lavender Dream Cake</h4><span>From $56</span></div>
+    </div>
+    <div class="hb-card">
+      <img src="https://images.unsplash.com/photo-1486427944544-d2c246c4df14?w=500&h=400&fit=crop" alt="Fresh croissants">
+      <span class="hb-tag pch">Daily</span>
+      <div class="hb-ov"><h4>Butter Croissants</h4><span>$5.25</span></div>
+    </div>
+    <div class="hb-card">
+      <img src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=500&h=400&fit=crop" alt="Colorful layer cake">
+      <span class="hb-tag mnt">Popular</span>
+      <div class="hb-ov"><h4>Rainbow Funfetti</h4><span>$48</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- MENU -->
+<section class="menu" id="menu"><div class="mi">
+  <span class="tag">🍰 Our Menu</span>
+  <h2 class="stit">Made with joy,<br>baked with love</h2>
+  <p class="ssub">Everything is scratch-made daily with organic flour, real butter, and seasonal ingredients. Our pastry chef trained in Paris and brings a Texas twist.</p>
+  <div class="cat-row">
+    <div class="cat active">All Items</div><div class="cat">Cakes</div><div class="cat">Pastries</div><div class="cat">Cookies</div><div class="cat">Bread</div><div class="cat">Drinks</div>
+  </div>
+  <div class="mg">
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&h=400&fit=crop" alt="Chocolate cake with berries"><span class="mc-badge lav">Bestseller</span></div>
+      <div class="mc-info"><h3>Dark Chocolate Ganache</h3><p>Rich Belgian chocolate layers, raspberry compote, gold dust</p><div class="mc-foot"><span class="mc-price">$54</span><button class="mc-cart">+</button></div></div>
+    </div>
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1587668178277-295251f900ce?w=500&h=400&fit=crop" alt="Colorful cupcakes"><span class="mc-badge pch">Popular</span></div>
+      <div class="mc-info"><h3>Garden Party Cupcakes</h3><p>Vanilla, strawberry, lemon, lavender — pick your flavor!</p><div class="mc-foot"><span class="mc-price">$4.75</span><button class="mc-cart">+</button></div></div>
+    </div>
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?w=500&h=400&fit=crop" alt="Pastel macarons"><span class="mc-badge rs">Gift Set</span></div>
+      <div class="mc-info"><h3>Pastel Macaron Box</h3><p>12 handmade flavors: rose, pistachio, Earl Grey, yuzu & more</p><div class="mc-foot"><span class="mc-price">$32</span><button class="mc-cart">+</button></div></div>
+    </div>
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?w=500&h=400&fit=crop" alt="Golden croissants"><span class="mc-badge mn">Fresh</span></div>
+      <div class="mc-info"><h3>Almond Croissant</h3><p>Twice-baked with frangipane, toasted almond flakes, powdered sugar</p><div class="mc-foot"><span class="mc-price">$5.75</span><button class="mc-cart">+</button></div></div>
+    </div>
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1612203985729-70726954388c?w=500&h=400&fit=crop" alt="Colorful donuts"><span class="mc-badge sk">New</span></div>
+      <div class="mc-info"><h3>Bloom Donuts</h3><p>Brioche donuts: ube glaze, matcha, honey lavender, passion fruit</p><div class="mc-foot"><span class="mc-price">$5.50</span><button class="mc-cart">+</button></div></div>
+    </div>
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=500&h=400&fit=crop" alt="Assorted cookies"><span class="mc-badge pch">Fan Fave</span></div>
+      <div class="mc-info"><h3>Cookie Flight</h3><p>Try all 6: brown butter chocolate, snickerdoodle, PB&J, lemon poppy</p><div class="mc-foot"><span class="mc-price">$22</span><button class="mc-cart">+</button></div></div>
+    </div>
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=500&h=400&fit=crop" alt="Strawberry cake"><span class="mc-badge lav">Seasonal</span></div>
+      <div class="mc-info"><h3>Strawberry Cloud Cake</h3><p>Chiffon layers, fresh strawberry cream, rose petals. Serves 8-10</p><div class="mc-foot"><span class="mc-price">$58</span><button class="mc-cart">+</button></div></div>
+    </div>
+    <div class="mc fi">
+      <div class="mc-img"><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=500&h=400&fit=crop" alt="Tiramisu in glass"><span class="mc-badge mn">Classic</span></div>
+      <div class="mc-info"><h3>Lavender Tiramisu</h3><p>Our twist: lavender-infused mascarpone, honey espresso soak</p><div class="mc-foot"><span class="mc-price">$9.50</span><button class="mc-cart">+</button></div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ABOUT -->
+<section class="about" id="about"><div class="ab-in">
+  <div class="ab-img">
+    <img src="https://images.unsplash.com/photo-1556217477-d325251ece38?w=700&h=600&fit=crop" alt="Baker decorating colorful cake">
+    <div class="ab-float"><strong>4.8★</strong><span>1,400+ Reviews</span></div>
+  </div>
+  <div>
+    <span class="tag">🌷 Our Story</span>
+    <h2>Baked with heart in Austin, TX</h2>
+    <p class="ap">Bloom Bakehouse was founded in 2018 by pastry chef Maya Chen after a decade of working in Parisian patisseries and Tokyo cafés. Her mission: bring world-class pastry to Austin with a playful, colorful, Texas-sized personality.</p>
+    <p class="ap">Every item is handmade daily using organic flour, local dairy, and seasonal fruits. We don't do artificial colors — our pastels come from beet powder, butterfly pea flower, matcha, and turmeric. Real ingredients, real magic.</p>
+    <div class="vals">
+      <div class="val"><div class="vi">🌾</div><h4>Organic Flour</h4><p>Stone-milled locally</p></div>
+      <div class="val"><div class="vi">🎨</div><h4>Natural Colors</h4><p>Zero artificial dyes</p></div>
+      <div class="val"><div class="vi">💚</div><h4>Local First</h4><p>Texas-sourced dairy</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews"><div class="rv-in">
+  <span class="tag">💬 Reviews</span>
+  <h2 class="stit" style="margin-bottom:60px">Our customers are the sweetest</h2>
+  <div class="rvg">
+    <div class="rvc fi"><div class="rvc-stars">⭐⭐⭐⭐⭐</div><blockquote>"The Lavender Dream Cake was the centerpiece of my bridal shower and everyone was in AWE. Almost too beautiful to eat. Almost. We devoured it."</blockquote><div class="rvc-who"><div class="rvc-av a1">S</div><div><div class="rvc-name">Sarah M.</div><div class="rvc-via">Google Review</div></div></div></div>
+    <div class="rvc fi"><div class="rvc-stars">⭐⭐⭐⭐⭐</div><blockquote>"Best macarons in Austin, no contest. The rose and Earl Grey flavors transported me to Paris. I buy a box every single Friday. My co-workers love me for it."</blockquote><div class="rvc-who"><div class="rvc-av a2">R</div><div><div class="rvc-name">Rachel K.</div><div class="rvc-via">Yelp Review</div></div></div></div>
+    <div class="rvc fi"><div class="rvc-stars">⭐⭐⭐⭐⭐</div><blockquote>"Ordered the Bloom Donuts for my daughter's 7th birthday party. The kids went CRAZY for the ube and passion fruit ones. Already planning next year's order!"</blockquote><div class="rvc-who"><div class="rvc-av a3">T</div><div><div class="rvc-name">Tom & Lisa D.</div><div class="rvc-via">Google Review</div></div></div></div>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="cta" id="order"><div class="cta-in">
+  <h2>Let's make your day sweeter</h2>
+  <p>Order online for pickup or local delivery. Custom cakes need 48 hours notice — our AI assistant can walk you through options anytime!</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-w">🛒 Order for Pickup</a>
+    <a href="#" class="btn-wh">🎂 Custom Cake Request</a>
+  </div>
+  <div class="cta-ph">Or call: <a href="tel:+15125559999">(512) 555-9999</a></div>
+</div></section>
+
+<!-- CONTACT -->
+<section class="contact"><div class="ct-in">
+  <div class="ctc"><div class="ic">📍</div><h3>Find Us</h3><p>2210 South Lamar Blvd<br>Austin, TX 78704<br>South Lamar</p></div>
+  <div class="ctc"><div class="ic">🕐</div><h3>Hours</h3><p>Tue-Sat: 7:00 AM - 7:00 PM<br>Sunday: 8:00 AM - 4:00 PM<br>Monday: Closed</p></div>
+  <div class="ctc"><div class="ic">📱</div><h3>Get in Touch</h3><p>Phone: (512) 555-9999<br>hello@bloombakehouse.com<br>@bloombakehouse</p></div>
+</div></section>
+
+<footer>
+  <div class="ft">Bloom Bakehouse</div>
+  <div><a href="#">Menu</a><a href="#">Custom Cakes</a><a href="#">Catering</a><a href="#">Wholesale</a><a href="#">Gift Cards</a></div>
+  <p class="cp">&copy; 2026 Bloom Bakehouse. All rights reserved. | Powered by Scientia Thrive</p>
+</footer>
+
+<!-- CHATBOT -->
+<div class="cw">
+  <div class="chbox" id="chb">
+    <div class="chh"><h4>🌸 Bloom AI Assistant</h4><p>Online &bull; Orders, cakes &amp; more</p></div>
+    <div class="chm"><div class="chbot"><div class="av">🌸</div><div class="bbl">Hi there! 💜 Welcome to Bloom Bakehouse! I can help you order treats, check today's fresh items, explore custom cake options, or answer any questions. What sounds good?</div></div></div>
+    <div class="chf"><input placeholder="What are you craving today?"><button>Send</button></div>
+  </div>
+  <button class="ctgl" onclick="document.getElementById('chb').classList.toggle('on')">💬</button>
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')})},{threshold:0.08});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

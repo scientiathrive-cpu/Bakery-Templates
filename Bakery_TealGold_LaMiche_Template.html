@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Miche Patisserie | French Artisan Bakery</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0D4F4F;--teal-dark:#0A3939;--teal-mid:#147070;--teal-light:#E6F5F0;
+  --gold:#D4A23A;--gold-light:#F5ECDA;--gold-glow:rgba(212,162,58,0.15);
+  --ink:#0A1A1A;--ivory:#FAF8F3;--bone:#F1EDE5;
+  --dim:#6B7F7F;--mist:#9BAFAF;
+  --white:#FFFFFF;--border:rgba(212,162,58,0.15);
+  --r:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;color:var(--ivory);background:var(--teal-dark);overflow-x:hidden}
+h1,h2,h3{font-family:'Playfair Display',serif}
+img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,57,57,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,162,58,0.1)}
+.ni{max-width:1260px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-ic{font-size:28px}
+.logo-t{font-family:'Playfair Display',serif;font-size:24px;color:var(--gold);font-weight:700;letter-spacing:1px}
+.logo-sub{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:var(--mist);display:block;margin-top:-2px}
+.nl{display:flex;gap:30px;align-items:center}
+.nl a{text-decoration:none;color:var(--mist);font-size:13px;font-weight:500;letter-spacing:0.5px;transition:color 0.3s}
+.nl a:hover{color:var(--gold)}
+.nl .cb{background:var(--gold);color:var(--teal-dark)!important;padding:11px 26px;border-radius:50px;font-weight:700!important;transition:all 0.3s!important}
+.nl .cb:hover{background:#E8BA52;transform:translateY(-2px);box-shadow:0 8px 28px var(--gold-glow)}
+.mm{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--gold)}
+
+/* HERO */
+.hero{padding:140px 32px 100px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(170deg,var(--teal-dark) 0%,var(--teal) 50%,rgba(13,79,79,0.95) 100%)}
+.hero::after{content:'';position:absolute;top:-150px;right:-150px;width:600px;height:600px;background:radial-gradient(circle,var(--gold-glow),transparent 70%);border-radius:50%}
+.hi{max-width:1260px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(212,162,58,0.3);padding:7px 18px;border-radius:50px;font-size:11px;font-weight:600;color:var(--gold);margin-bottom:24px;letter-spacing:1.5px;text-transform:uppercase;background:rgba(212,162,58,0.06)}
+.hero h1{font-size:58px;line-height:1.05;margin-bottom:22px;color:var(--ivory)}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero-p{font-size:17px;line-height:1.9;color:var(--mist);margin-bottom:36px;max-width:480px}
+.hbtns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+.btn{padding:16px 34px;border-radius:50px;text-decoration:none;font-weight:700;font-size:13px;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:inherit;letter-spacing:0.3px}
+.btn-g{background:var(--gold);color:var(--teal-dark)}.btn-g:hover{background:#E8BA52;transform:translateY(-3px);box-shadow:0 12px 36px var(--gold-glow)}
+.btn-o{background:transparent;color:var(--ivory);border:1.5px solid rgba(255,255,255,0.2);padding:16px 34px;border-radius:50px;text-decoration:none;font-weight:600;font-size:13px;transition:all 0.3s;letter-spacing:0.3px}
+.btn-o:hover{border-color:var(--gold);color:var(--gold)}
+.hero-details{display:flex;gap:36px}
+.hd{text-align:left}
+.hd strong{display:block;font-family:'Playfair Display',serif;font-size:30px;color:var(--gold)}
+.hd span{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--mist);font-weight:500}
+
+/* HERO IMAGE */
+.hr{position:relative}
+.hr-main{border-radius:24px;overflow:hidden;height:520px;box-shadow:0 32px 80px rgba(0,0,0,0.3);position:relative}
+.hr-main img{height:100%}
+.hr-main::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(10,26,26,0.6))}
+.hr-float1{position:absolute;bottom:-20px;left:-20px;background:var(--teal);border:1px solid rgba(212,162,58,0.2);border-radius:16px;padding:16px 22px;box-shadow:0 12px 36px rgba(0,0,0,0.2);display:flex;align-items:center;gap:12px;z-index:2}
+.hr-float1 .stars{color:var(--gold);font-size:14px}
+.hr-float1 strong{color:var(--ivory);font-size:14px}
+.hr-float1 span{font-size:11px;color:var(--mist)}
+.hr-float2{position:absolute;top:20px;right:-16px;background:var(--gold);color:var(--teal-dark);border-radius:14px;padding:14px 18px;box-shadow:0 8px 24px var(--gold-glow);z-index:2;text-align:center}
+.hr-float2 strong{font-family:'Playfair Display',serif;font-size:22px;display:block}
+.hr-float2 span{font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+
+/* SHOWCASE */
+.showcase{padding:100px 32px;background:var(--teal);position:relative}
+.sh-in{max-width:1260px;margin:0 auto}
+.tag{display:inline-block;color:var(--gold);padding:7px 0;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:3px;margin-bottom:14px}
+.stit{font-size:48px;color:var(--ivory);margin-bottom:12px}
+.ssub{font-size:16px;color:var(--mist);max-width:480px;margin-bottom:64px;line-height:1.8}
+.shg{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.shc{border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer;transition:all 0.5s;group:true}
+.shc:hover{transform:translateY(-8px)}
+.shc:hover img{transform:scale(1.08)}
+.shc-img{height:300px;overflow:hidden}
+.shc-img img{transition:transform 0.6s}
+.shc-ov{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,26,26,0.9));padding:20px}
+.shc-ov h3{font-size:18px;color:var(--ivory);margin-bottom:4px}
+.shc-ov p{font-size:13px;color:var(--mist)}
+.shc-price{position:absolute;top:14px;right:14px;background:var(--gold);color:var(--teal-dark);padding:6px 14px;border-radius:50px;font-size:13px;font-weight:700}
+.shc-tag{position:absolute;top:14px;left:14px;background:rgba(10,57,57,0.85);backdrop-filter:blur(8px);color:var(--gold);padding:4px 12px;border-radius:50px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;border:1px solid rgba(212,162,58,0.2)}
+
+/* FEATURES */
+.features{padding:100px 32px;background:var(--teal-dark);position:relative}
+.features::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-glow),transparent)}
+.ft-in{max-width:1260px;margin:0 auto}
+.ftg{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.ftc{background:rgba(212,162,58,0.04);border:1px solid rgba(212,162,58,0.08);border-radius:var(--r);padding:32px;text-align:center;transition:all 0.3s}
+.ftc:hover{background:rgba(212,162,58,0.08);transform:translateY(-4px);border-color:rgba(212,162,58,0.2)}
+.ftc .ic{font-size:36px;margin-bottom:16px}
+.ftc h3{font-size:17px;margin-bottom:8px;color:var(--ivory);font-family:'Outfit',sans-serif;font-weight:700}
+.ftc p{font-size:13px;color:var(--mist);line-height:1.7}
+
+/* MENU DETAIL */
+.menudet{padding:100px 32px;background:var(--teal)}
+.md-in{max-width:1260px;margin:0 auto}
+.mdg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mdc{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:var(--r);overflow:hidden;display:flex;transition:all 0.3s;cursor:pointer}
+.mdc:hover{background:rgba(212,162,58,0.06);border-color:rgba(212,162,58,0.15);transform:translateX(4px)}
+.mdc-img{width:120px;height:120px;flex-shrink:0;overflow:hidden}
+.mdc-img img{height:100%}
+.mdc-info{padding:18px;display:flex;flex-direction:column;justify-content:center}
+.mdc-info h3{font-size:17px;color:var(--ivory);margin-bottom:4px;font-family:'Outfit',sans-serif;font-weight:700}
+.mdc-info p{font-size:12px;color:var(--mist);line-height:1.5;margin-bottom:6px}
+.mdc-meta{display:flex;align-items:center;gap:12px}
+.mdc-price{font-weight:700;color:var(--gold);font-size:15px}
+.mdc-badge{background:rgba(212,162,58,0.15);color:var(--gold);padding:2px 10px;border-radius:50px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+
+/* REVIEWS */
+.reviews{padding:100px 32px;background:var(--teal-dark)}
+.rv-in{max-width:1260px;margin:0 auto}
+.rvg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rvc{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:var(--r);padding:28px;transition:all 0.3s}
+.rvc:hover{background:rgba(212,162,58,0.06);border-color:rgba(212,162,58,0.15)}
+.rvc-stars{color:var(--gold);font-size:14px;margin-bottom:14px;letter-spacing:2px}
+.rvc blockquote{font-size:15px;line-height:1.7;color:rgba(255,255,255,0.7);margin-bottom:18px;font-family:'Playfair Display',serif;font-style:italic}
+.rvc-who{display:flex;align-items:center;gap:10px}
+.rvc-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;background:var(--gold);color:var(--teal-dark)}
+.rvc-name{font-weight:700;font-size:13px;color:var(--ivory)}.rvc-via{font-size:11px;color:var(--mist)}
+
+/* CTA */
+.cta{padding:100px 32px;background:linear-gradient(135deg,var(--gold),#C08E28);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(255,255,255,0.1),transparent 60%);border-radius:50%}
+.cta-in{max-width:600px;margin:0 auto;position:relative;z-index:1}
+.cta h2{font-size:48px;color:var(--teal-dark);margin-bottom:16px}
+.cta p{font-size:17px;color:rgba(10,57,57,0.7);margin-bottom:36px;line-height:1.8}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-dk{background:var(--teal-dark);color:var(--gold);padding:16px 34px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px}
+.btn-dk:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,0.2)}
+.btn-dk2{background:transparent;color:var(--teal-dark);border:2px solid rgba(10,57,57,0.3);padding:16px 34px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;transition:all 0.3s}
+.btn-dk2:hover{background:var(--teal-dark);color:var(--gold)}
+.cta-ph{margin-top:24px;color:rgba(10,57,57,0.5);font-size:14px}
+.cta-ph a{color:var(--teal-dark);font-weight:700;font-size:20px;text-decoration:none}
+
+/* CONTACT */
+.contact{padding:80px 32px;background:var(--teal)}
+.ct-in{max-width:1260px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ctc{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);border-radius:var(--r);padding:28px;text-align:center;transition:all 0.3s}
+.ctc:hover{border-color:rgba(212,162,58,0.2)}
+.ctc .ic{font-size:32px;margin-bottom:12px}
+.ctc h3{font-size:18px;margin-bottom:8px;color:var(--ivory);font-family:'Outfit',sans-serif;font-weight:700}
+.ctc p{font-size:14px;color:var(--mist);line-height:1.7}
+
+footer{background:var(--ink);padding:48px 32px;text-align:center}
+footer .ft{font-family:'Playfair Display',serif;font-size:28px;color:var(--gold);margin-bottom:14px}
+footer a{color:var(--mist);text-decoration:none;margin:0 16px;font-size:12px;letter-spacing:0.5px}
+footer .cp{color:rgba(255,255,255,0.12);font-size:11px;margin-top:20px}
+
+/* CHAT */
+.cw{position:fixed;bottom:24px;right:24px;z-index:999}
+.ctgl{width:62px;height:62px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 32px var(--gold-glow);transition:all 0.3s;font-size:24px;color:var(--teal-dark);border:none}
+.ctgl:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(212,162,58,0.4)}
+.chbox{position:absolute;bottom:78px;right:0;width:370px;background:var(--teal);border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,0.3);overflow:hidden;display:none;animation:up 0.3s;border:1px solid rgba(212,162,58,0.1)}
+.chbox.on{display:block}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.chh{background:linear-gradient(135deg,var(--teal-dark),var(--teal));padding:20px;border-bottom:1px solid rgba(212,162,58,0.1)}
+.chh h4{font-family:'Playfair Display',serif;font-size:17px;color:var(--gold)}
+.chh p{font-size:12px;color:var(--mist)}
+.chm{padding:20px;height:260px;overflow-y:auto}
+.chbot{display:flex;gap:8px;margin-bottom:14px}
+.chbot .av{width:30px;height:30px;background:rgba(212,162,58,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.chbot .bbl{background:rgba(255,255,255,0.05);padding:12px 16px;border-radius:16px;font-size:13px;line-height:1.6;max-width:260px;color:rgba(255,255,255,0.7)}
+.chf{display:flex;padding:12px;border-top:1px solid rgba(255,255,255,0.05);gap:8px}
+.chf input{flex:1;border:1px solid rgba(255,255,255,0.1);border-radius:50px;padding:10px 16px;font-size:13px;outline:none;font-family:inherit;background:rgba(255,255,255,0.05);color:var(--ivory);transition:border 0.3s}
+.chf input:focus{border-color:var(--gold)}
+.chf input::placeholder{color:var(--mist)}
+.chf button{background:var(--gold);color:var(--teal-dark);border:none;border-radius:50px;padding:10px 18px;cursor:pointer;font-weight:700;font-size:12px}
+
+@media(max-width:900px){
+  .nl{display:none}.mm{display:block}
+  .hi{grid-template-columns:1fr}
+  .shg{grid-template-columns:1fr 1fr}.mdg{grid-template-columns:1fr}
+  .ftg,.rvg,.ct-in{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:40px}
+  .stit{font-size:36px}
+}
+@media(max-width:600px){
+  .shg,.ftg,.rvg,.ct-in{grid-template-columns:1fr}
+}
+.fi{opacity:0;transform:translateY(28px);transition:all 0.6s}.fi.v{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav><div class="ni">
+  <a href="#" class="logo"><span class="logo-ic">🥐</span><div><span class="logo-t">La Miche</span><span class="logo-sub">Patisserie &amp; Boulangerie</span></div></a>
+  <div class="nl"><a href="#menu">Menu</a><a href="#about">About</a><a href="#reviews">Reviews</a><a href="#order" class="cb">Order Now</a></div>
+  <button class="mm">☰</button>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero"><div class="hi">
+  <div>
+    <div class="hero-tag">✦ Award-Winning French Bakery</div>
+    <h1>Where flour becomes <em>art</em></h1>
+    <p class="hero-p">Classically trained, locally inspired. Authentic French pastries and artisan breads baked fresh daily in the heart of San Francisco since 2008.</p>
+    <div class="hbtns">
+      <a href="#order" class="btn btn-g">Order Online →</a>
+      <a href="tel:+14155551234" class="btn-o">☎ (415) 555-1234</a>
+    </div>
+    <div class="hero-details">
+      <div class="hd"><strong>17</strong><span>Years</span></div>
+      <div class="hd"><strong>4.9★</strong><span>Google</span></div>
+      <div class="hd"><strong>5:30am</strong><span>Fresh Daily</span></div>
+    </div>
+  </div>
+  <div class="hr">
+    <div class="hr-main">
+      <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=700&h=600&fit=crop" alt="Assorted French pastries display">
+    </div>
+    <div class="hr-float1"><div><div class="stars">★★★★★</div><strong>4.9 / 5</strong><br><span>2,300+ reviews</span></div></div>
+    <div class="hr-float2"><strong>17</strong><span>Years of Excellence</span></div>
+  </div>
+</div></section>
+
+<!-- SHOWCASE -->
+<section class="showcase" id="menu"><div class="sh-in">
+  <div class="tag">✦ Our Creations</div>
+  <h2 class="stit">Signature collection</h2>
+  <p class="ssub">Each creation draws from classical French technique perfected over 17 years. Seasonal menus change quarterly.</p>
+  <div class="shg">
+    <div class="shc fi">
+      <div class="shc-img"><img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?w=500&h=600&fit=crop" alt="Golden croissants"></div>
+      <span class="shc-tag">Signature</span><span class="shc-price">$5.50</span>
+      <div class="shc-ov"><h3>Croissant au Beurre</h3><p>84% Normandy butter, 48 layers</p></div>
+    </div>
+    <div class="shc fi">
+      <div class="shc-img"><img src="https://images.unsplash.com/photo-1558326567-98ae2405596b?w=500&h=600&fit=crop" alt="Fruit tart"></div>
+      <span class="shc-tag">Seasonal</span><span class="shc-price">$8.50</span>
+      <div class="shc-ov"><h3>Tarte aux Fruits</h3><p>Vanilla crème pâtissière, seasonal fruits</p></div>
+    </div>
+    <div class="shc fi">
+      <div class="shc-img"><img src="https://images.unsplash.com/photo-1549312142-d1386af9e1b5?w=500&h=600&fit=crop" alt="Sourdough bread"></div>
+      <span class="shc-tag">Daily</span><span class="shc-price">$9.00</span>
+      <div class="shc-ov"><h3>Pain au Levain</h3><p>72-hour ferment, stone-milled flour</p></div>
+    </div>
+    <div class="shc fi">
+      <div class="shc-img"><img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500&h=600&fit=crop" alt="Chocolate eclairs"></div>
+      <span class="shc-tag">Classic</span><span class="shc-price">$6.75</span>
+      <div class="shc-ov"><h3>Éclair au Chocolat</h3><p>Valrhona ganache, choux pastry</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- FEATURES -->
+<section class="features" id="about"><div class="ft-in">
+  <div class="tag">✦ Why La Miche</div>
+  <h2 class="stit" style="margin-bottom:60px">Craft, not shortcuts</h2>
+  <div class="ftg">
+    <div class="ftc fi"><div class="ic">🌾</div><h3>Heritage Flour</h3><p>Stone-milled from California heritage wheat. Traceable from farm to loaf.</p></div>
+    <div class="ftc fi"><div class="ic">⏰</div><h3>Slow Ferment</h3><p>72-hour sourdough process. No shortcuts, no artificial leaveners.</p></div>
+    <div class="ftc fi"><div class="ic">🇫🇷</div><h3>French Trained</h3><p>Our head baker trained at Le Cordon Bleu Paris for 3 years.</p></div>
+    <div class="ftc fi"><div class="ic">🌱</div><h3>Local First</h3><p>Butter from Straus, eggs from Marin Sun Farms, fruit from local orchards.</p></div>
+  </div>
+</div></section>
+
+<!-- DETAILED MENU -->
+<section class="menudet"><div class="md-in">
+  <div class="tag">✦ Full Menu</div>
+  <h2 class="stit" style="margin-bottom:60px">Today's offerings</h2>
+  <div class="mdg">
+    <div class="mdc fi"><div class="mdc-img"><img src="https://images.unsplash.com/photo-1530610476181-d83430b64dcd?w=300&h=300&fit=crop" alt="Pain au chocolat"></div><div class="mdc-info"><h3>Pain au Chocolat</h3><p>Flaky pastry, two batons of dark chocolate</p><div class="mdc-meta"><span class="mdc-price">$5.75</span><span class="mdc-badge">Bestseller</span></div></div></div>
+    <div class="mdc fi"><div class="mdc-img"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&h=300&fit=crop" alt="Baguette"></div><div class="mdc-info"><h3>Baguette Tradition</h3><p>Crisp crust, open crumb, classic French formula</p><div class="mdc-meta"><span class="mdc-price">$4.50</span><span class="mdc-badge">Daily</span></div></div></div>
+    <div class="mdc fi"><div class="mdc-img"><img src="https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?w=300&h=300&fit=crop" alt="Macarons"></div><div class="mdc-info"><h3>Macarons (box of 6)</h3><p>Lavender, pistachio, raspberry, vanilla, espresso, lemon</p><div class="mdc-meta"><span class="mdc-price">$18.00</span><span class="mdc-badge">Gift</span></div></div></div>
+    <div class="mdc fi"><div class="mdc-img"><img src="https://images.unsplash.com/photo-1587241321773-ab60c293ab6e?w=300&h=300&fit=crop" alt="Canelé"></div><div class="mdc-info"><h3>Canelé Bordelais</h3><p>Rum, vanilla, caramelized copper-mold bake</p><div class="mdc-meta"><span class="mdc-price">$4.25</span><span class="mdc-badge">Classic</span></div></div></div>
+    <div class="mdc fi"><div class="mdc-img"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=300&h=300&fit=crop" alt="Lemon tart"></div><div class="mdc-info"><h3>Tarte au Citron</h3><p>Meyer lemon curd, torched Swiss meringue</p><div class="mdc-meta"><span class="mdc-price">$7.50</span><span class="mdc-badge">Seasonal</span></div></div></div>
+    <div class="mdc fi"><div class="mdc-img"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=300&h=300&fit=crop" alt="Danish pastry"></div><div class="mdc-info"><h3>Kouign-Amann</h3><p>Caramelized butter pastry, flaky layers, sea salt</p><div class="mdc-meta"><span class="mdc-price">$5.50</span><span class="mdc-badge">Fan Fave</span></div></div></div>
+  </div>
+</div></section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews"><div class="rv-in">
+  <div class="tag">✦ Testimonials</div>
+  <h2 class="stit" style="margin-bottom:60px">What our guests say</h2>
+  <div class="rvg">
+    <div class="rvc fi"><div class="rvc-stars">★★★★★</div><blockquote>"The croissants at La Miche are the closest to Paris I've found in the US. Perfectly laminated, golden, and impossibly flaky. I come every Saturday."</blockquote><div class="rvc-who"><div class="rvc-av">N</div><div><div class="rvc-name">Nathan W.</div><div class="rvc-via">Google</div></div></div></div>
+    <div class="rvc fi"><div class="rvc-stars">★★★★★</div><blockquote>"They did the cake for our wedding — a five-tier opera cake with gold leaf. Guests still talk about it two years later. Worth every single penny."</blockquote><div class="rvc-who"><div class="rvc-av">E</div><div><div class="rvc-name">Emily & James R.</div><div class="rvc-via">Yelp</div></div></div></div>
+    <div class="rvc fi"><div class="rvc-stars">★★★★★</div><blockquote>"The sourdough is transcendent. A 72-hour ferment you can actually taste. My kids fight over the last slice. Best bakery in SF, no debate."</blockquote><div class="rvc-who"><div class="rvc-av">K</div><div><div class="rvc-name">Karen T.</div><div class="rvc-via">Google</div></div></div></div>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="cta" id="order"><div class="cta-in">
+  <h2>Taste the difference</h2>
+  <p>Order online for same-day pickup. Custom cakes and catering available with 72 hours notice. Our concierge AI can assist you anytime.</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-dk">🛒 Order Pickup</a>
+    <a href="#" class="btn-dk2">🎂 Custom Cakes</a>
+  </div>
+  <div class="cta-ph">Or call: <a href="tel:+14155551234">(415) 555-1234</a></div>
+</div></section>
+
+<!-- CONTACT -->
+<section class="contact"><div class="ct-in">
+  <div class="ctc"><div class="ic">📍</div><h3>Visit Us</h3><p>742 Valencia Street<br>San Francisco, CA 94110<br>Mission District</p></div>
+  <div class="ctc"><div class="ic">🕐</div><h3>Hours</h3><p>Tue-Sun: 6:30 AM - 6:00 PM<br>Monday: Closed<br><em>Arrive by 10AM for best selection</em></p></div>
+  <div class="ctc"><div class="ic">📱</div><h3>Contact</h3><p>Phone: (415) 555-1234<br>bonjour@lamiche.com<br>@lamichesf</p></div>
+</div></section>
+
+<footer>
+  <div class="ft">La Miche</div>
+  <div><a href="#">Menu</a><a href="#">Custom Cakes</a><a href="#">Wholesale</a><a href="#">Catering</a><a href="#">Careers</a></div>
+  <p class="cp">&copy; 2026 La Miche Patisserie. All rights reserved. | Powered by Scientia Thrive</p>
+</footer>
+
+<!-- CHATBOT -->
+<div class="cw">
+  <div class="chbox" id="chb">
+    <div class="chh"><h4>🥐 La Miche Concierge</h4><p>Online &bull; Order &amp; cake consultations</p></div>
+    <div class="chm"><div class="chbot"><div class="av">🥐</div><div class="bbl">Bonjour! Welcome to La Miche. I can help you place an order, check today's availability, inquire about custom cakes, or answer any questions about our offerings. How may I assist you?</div></div></div>
+    <div class="chf"><input placeholder="How can we help?"><button>Send</button></div>
+  </div>
+  <button class="ctgl" onclick="document.getElementById('chb').classList.toggle('on')">💬</button>
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')})},{threshold:0.08});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
